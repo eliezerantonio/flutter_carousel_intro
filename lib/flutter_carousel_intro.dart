@@ -1,3 +1,4 @@
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -6,7 +7,8 @@ import 'package:provider/provider.dart';
 class FlutterCarouselIntro extends StatelessWidget {
   final List<Widget> slides;
   final bool pointsAbove;
-  final bool rotateAnimation;
+  final bool animatedRotateX;
+  final bool animatedRotateZ;
   final bool animatedOpacity;
   final bool scale;
   final Color primaryColor;
@@ -14,14 +16,15 @@ class FlutterCarouselIntro extends StatelessWidget {
   final double primaryBullet;
   final double secundaryBullet;
   final Curve dotsCurve;
-
-   const FlutterCarouselIntro({super.key, 
+  
+  const FlutterCarouselIntro({super.key, 
     required this.slides,
     this.pointsAbove = false,
-    this.rotateAnimation = false,
+    this.animatedRotateX = false,
+    this.animatedRotateZ = false,
     this.animatedOpacity = false,
     this.scale = false,
-    this.dotsCurve = Curves.linear,
+    this.dotsCurve =Curves.linear,
     this.primaryColor = Colors.blue,
     this.secundaryColor = Colors.grey,
     this.primaryBullet = 20,
@@ -41,7 +44,8 @@ class FlutterCarouselIntro extends StatelessWidget {
             return _CreateStructureSlides(
               pointsAbove: pointsAbove,
               slides: slides,
-              rotateAnimation: rotateAnimation,
+              animatedRotateX: animatedRotateX,
+              animatedRotateZ: animatedRotateZ,
               scale: scale,
               dotsCurve: dotsCurve,
               animatedOpacity: animatedOpacity,
@@ -54,19 +58,20 @@ class FlutterCarouselIntro extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
-  _CreateStructureSlides({
-    required this.pointsAbove,
-    required this.slides,
-    required this.rotateAnimation,
-    required this.scale,
-    required this.dotsCurve,
-    required this.animatedOpacity,
-  });
+  _CreateStructureSlides(
+      {required this.pointsAbove,
+      required this.slides,
+      required this.animatedRotateX,
+      required this.animatedRotateZ,
+      required this.scale,
+      required this.dotsCurve,
+      required this.animatedOpacity});
 
   final bool pointsAbove;
   final List<Widget> slides;
   final Curve dotsCurve;
-  bool rotateAnimation;
+  bool animatedRotateX;
+  bool animatedRotateZ;
   bool scale;
   bool animatedOpacity;
 
@@ -76,7 +81,7 @@ class _CreateStructureSlides extends StatelessWidget {
       children: [
         if (pointsAbove) _Dots(slides.length, dotsCurve),
         Expanded(
-            child: _Slides(slides, rotateAnimation, scale, animatedOpacity)),
+            child: _Slides(slides, animatedRotateX,animatedRotateZ, scale, animatedOpacity,)),
         if (!pointsAbove) _Dots(slides.length, dotsCurve),
       ],
     );
@@ -112,10 +117,9 @@ class _Dot extends StatelessWidget {
     final percent = 1 - (slideshoModel._currentPage - index);
     final value = percent.clamp(0.0, 1.0);
 
-    final condition = (slideshoModel.currentPage >= index - 0.5 &&  slideshoModel.currentPage < index + 0.5);
-
-    final dotSize =
-        condition ? slideshoModel.primaryBullet : slideshoModel.secundaryBullet;
+    final condition = (slideshoModel.currentPage >= index - 0.5 &&
+        slideshoModel.currentPage < index + 0.5);
+    final dotSize =condition ? slideshoModel.primaryBullet : slideshoModel.secundaryBullet;
     return Center(
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),
@@ -124,7 +128,7 @@ class _Dot extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 5),
         height: dotSize,
         transformAlignment: Alignment.center,
-        transform: Matrix4.identity()..rotateZ(value * 2),
+        transform: Matrix4.identity()..rotateZ(value*2),
         curve: dotsCurve,
         decoration: BoxDecoration(
           color: condition
@@ -139,11 +143,12 @@ class _Dot extends StatelessWidget {
 
 class _Slides extends StatefulWidget {
   final List<Widget> slides;
-  bool rotateAnimation;
+  bool animatedRotateX;
+  bool animatedRotateZ;
   bool animatedOpacity;
   bool scale;
 
-  _Slides(this.slides, this.rotateAnimation, this.scale, this.animatedOpacity);
+  _Slides(this.slides, this.animatedRotateX, this.animatedRotateZ, this.scale, this.animatedOpacity);
 
   @override
   State<_Slides> createState() => _SlidesState();
@@ -186,18 +191,24 @@ class _SlidesState extends State<_Slides> {
               opacity: widget.animatedOpacity ? value : 1,
               duration: const Duration(milliseconds: 500),
               child: Transform(
-                alignment: widget.rotateAnimation ? Alignment.center : null,
+                alignment: widget.animatedRotateX ? Alignment.center : null,
                 transform: Matrix4.identity()
+                
+
                   ..setEntry(
-                    widget.rotateAnimation ? 3 : 1,
-                    widget.rotateAnimation ? 2 : 0,
-                    widget.rotateAnimation ? 0.002 : 0,
+                    widget.animatedRotateX ? 3 : 1,
+                    widget.animatedRotateX ? 2 : 0,
+                    widget.animatedRotateX ? 0.002 : 0,
                   )
-                  ..rotateX(widget.rotateAnimation ? pi * (value - 1) : 0.0)
+                 ..rotateX(widget.animatedRotateX ? pi * (value - 1) : 0.0)
+                 ..rotateZ(widget.animatedRotateZ ? pi * (value-1 ): 0.0)
+              
                   ..scale(
                     widget.scale ? value : 1.0,
                     widget.scale ? value : 1.0,
-                  ),
+                  )
+                 // ,
+,
                 child: _Slide(
                   widget.slides[index],
                 ),
