@@ -18,10 +18,6 @@ class MySlideshow extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
       pointsAbove: false,
-      animatedRotateX: false,
-      animatedRotateZ: true,
-      scale:true,
-      animatedOpacity: false,
       primaryBullet: 20,
       secundaryBullet: 12,
       primaryColor: Colors.pink,
