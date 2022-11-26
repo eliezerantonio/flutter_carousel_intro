@@ -24,9 +24,9 @@ class MySlideShow extends StatelessWidget {
       scale: true,
       animatedOpacity: false,
       primaryBullet: 20,
-      secondaryBullet: 12,
+      secundaryBullet: 12,
       primaryColor: Colors.pink,
-      secondaryColor: Colors.grey,
+      secundaryColor: Colors.grey,
       dotsCurve: Curves.slowMiddle,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
