@@ -58,7 +58,7 @@ class FlutterCarouselIntro extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
-  _CreateStructureSlides(
+  const _CreateStructureSlides(
       {required this.pointsAbove,
       required this.slides,
       required this.animatedRotateX,
@@ -70,10 +70,10 @@ class _CreateStructureSlides extends StatelessWidget {
   final bool pointsAbove;
   final List<Widget> slides;
   final Curve dotsCurve;
-  bool animatedRotateX;
-  bool animatedRotateZ;
-  bool scale;
-  bool animatedOpacity;
+  final bool animatedRotateX;
+  final bool animatedRotateZ;
+  final bool scale;
+  final bool animatedOpacity;
 
   @override
   Widget build(BuildContext context) {
@@ -151,13 +151,13 @@ class _Dot extends StatelessWidget {
 
 class _Slides extends StatefulWidget {
   final List<Widget> slides;
-  bool animatedRotateX;
-  bool animatedRotateZ;
-  bool animatedOpacity;
-  bool scale;
+  final bool animatedRotateX;
+  final bool animatedRotateZ;
+  final bool animatedOpacity;
+  final bool scale;
 
-  _Slides(this.slides, this.animatedRotateX, this.animatedRotateZ, this.scale,
-      this.animatedOpacity);
+  const _Slides(this.slides, this.animatedRotateX, this.animatedRotateZ,
+      this.scale, this.animatedOpacity);
 
   @override
   State<_Slides> createState() => _SlidesState();
@@ -185,44 +185,42 @@ class _SlidesState extends State<_Slides> {
   @override
   Widget build(BuildContext context) {
     final currentPage = context.watch<_SliderModel>().currentPage;
-    return Container(
-      child: PageView.builder(
-        itemCount: widget.slides.length,
-        controller: pageViewController,
-        physics: const BouncingScrollPhysics(),
-        itemBuilder: (BuildContext context, int index) {
-          final percent = 1 - (currentPage - index);
-          final value = percent.clamp(0.0, 1.0);
+    return PageView.builder(
+      itemCount: widget.slides.length,
+      controller: pageViewController,
+      physics: const BouncingScrollPhysics(),
+      itemBuilder: (BuildContext context, int index) {
+        final percent = 1 - (currentPage - index);
+        final value = percent.clamp(0.0, 1.0);
 
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AnimatedOpacity(
-              opacity: widget.animatedOpacity ? value : 1,
-              duration: const Duration(milliseconds: 500),
-              child: Transform(
-                alignment: widget.animatedRotateX ? Alignment.center : null,
-                transform: Matrix4.identity()
-                  ..setEntry(
-                    widget.animatedRotateX ? 3 : 1,
-                    widget.animatedRotateX ? 2 : 0,
-                    widget.animatedRotateX ? 0.002 : 0,
-                  )
-                  ..rotateX(widget.animatedRotateX ? pi * (value - 1) : 0.0)
-                  ..rotateZ(widget.animatedRotateZ ? pi * (value - 1) : 0.0)
-                  ..scale(
-                    widget.scale ? value : 1.0,
-                    widget.scale ? value : 1.0,
-                  )
-                // ,
-                ,
-                child: _Slide(
-                  widget.slides[index],
-                ),
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: AnimatedOpacity(
+            opacity: widget.animatedOpacity ? value : 1,
+            duration: const Duration(milliseconds: 500),
+            child: Transform(
+              alignment: widget.animatedRotateX ? Alignment.center : null,
+              transform: Matrix4.identity()
+                ..setEntry(
+                  widget.animatedRotateX ? 3 : 1,
+                  widget.animatedRotateX ? 2 : 0,
+                  widget.animatedRotateX ? 0.002 : 0,
+                )
+                ..rotateX(widget.animatedRotateX ? pi * (value - 1) : 0.0)
+                ..rotateZ(widget.animatedRotateZ ? pi * (value - 1) : 0.0)
+                ..scale(
+                  widget.scale ? value : 1.0,
+                  widget.scale ? value : 1.0,
+                )
+              // ,
+              ,
+              child: _Slide(
+                widget.slides[index],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
@@ -244,12 +242,12 @@ class _SliderModel with ChangeNotifier {
   double _currentPage = 0.0;
 
 //colors
-  Color _primaryColor = Colors.blue;
-  Color _secondaryColor = Colors.grey;
+  Color primaryColor = Colors.blue;
+  Color secondaryColor = Colors.grey;
 
 //dots
-  double _primaryBullet = 20;
-  double _secondaryBullet = 14;
+  double primaryBullet = 20;
+  double secondaryBullet = 14;
 
   double get currentPage => _currentPage;
 
@@ -257,31 +255,5 @@ class _SliderModel with ChangeNotifier {
     _currentPage = currentPage;
 
     notifyListeners();
-  }
-
-//get set current
-  Color get primaryColor => _primaryColor;
-
-  set primaryColor(Color color) {
-    _primaryColor = color;
-  }
-
-  Color get secondaryColor => _secondaryColor;
-  set secondaryColor(Color color) {
-    _secondaryColor = color;
-  }
-
-  //get set dots
-
-  double get primaryBullet => _primaryBullet;
-
-  set primaryBullet(double size) {
-    _primaryBullet = size;
-  }
-
-  double get secondaryBullet => _secondaryBullet;
-
-  set secondaryBullet(double size) {
-    _secondaryBullet = size;
   }
 }

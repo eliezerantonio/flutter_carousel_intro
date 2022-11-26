@@ -3,9 +3,10 @@ import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SlideShowPage extends StatelessWidget {
+  const SlideShowPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: MySlideShow(),
     );
@@ -13,6 +14,7 @@ class SlideShowPage extends StatelessWidget {
 }
 
 class MySlideShow extends StatelessWidget {
+  const MySlideShow({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
@@ -22,9 +24,9 @@ class MySlideShow extends StatelessWidget {
       scale: true,
       animatedOpacity: false,
       primaryBullet: 20,
-      secondaryBullet: 12,
+      secundaryBullet: 12,
       primaryColor: Colors.pink,
-      secondaryColor: Colors.grey,
+      secundaryColor: Colors.grey,
       dotsCurve: Curves.slowMiddle,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
