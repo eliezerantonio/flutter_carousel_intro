@@ -1,4 +1,3 @@
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -12,23 +11,24 @@ class FlutterCarouselIntro extends StatelessWidget {
   final bool animatedOpacity;
   final bool scale;
   final Color primaryColor;
-  final Color secundaryColor;
+  final Color secondaryColor;
   final double primaryBullet;
-  final double secundaryBullet;
+  final double secondaryBullet;
   final Curve dotsCurve;
-  
-  const FlutterCarouselIntro({super.key, 
+
+  const FlutterCarouselIntro({
+    super.key,
     required this.slides,
     this.pointsAbove = false,
     this.animatedRotateX = false,
     this.animatedRotateZ = false,
     this.animatedOpacity = false,
     this.scale = false,
-    this.dotsCurve =Curves.linear,
+    this.dotsCurve = Curves.linear,
     this.primaryColor = Colors.blue,
-    this.secundaryColor = Colors.grey,
+    this.secondaryColor = Colors.grey,
     this.primaryBullet = 20,
-    this.secundaryBullet = 14,
+    this.secondaryBullet = 14,
   });
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,9 @@ class FlutterCarouselIntro extends StatelessWidget {
         child: Center(
           child: Builder(builder: (context) {
             context.read<_SliderModel>().primaryColor = primaryColor;
-            context.read<_SliderModel>().secundaryColor = secundaryColor;
+            context.read<_SliderModel>().secondaryColor = secondaryColor;
             context.read<_SliderModel>().primaryBullet = primaryBullet;
-            context.read<_SliderModel>().secundaryBullet = secundaryBullet;
+            context.read<_SliderModel>().secondaryBullet = secondaryBullet;
             return _CreateStructureSlides(
               pointsAbove: pointsAbove,
               slides: slides,
@@ -81,7 +81,13 @@ class _CreateStructureSlides extends StatelessWidget {
       children: [
         if (pointsAbove) _Dots(slides.length, dotsCurve),
         Expanded(
-            child: _Slides(slides, animatedRotateX,animatedRotateZ, scale, animatedOpacity,)),
+            child: _Slides(
+          slides,
+          animatedRotateX,
+          animatedRotateZ,
+          scale,
+          animatedOpacity,
+        )),
         if (!pointsAbove) _Dots(slides.length, dotsCurve),
       ],
     );
@@ -113,13 +119,15 @@ class _Dot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final slideshoModel = context.watch<_SliderModel>();
-    final percent = 1 - (slideshoModel._currentPage - index);
+    final slideShowModel = context.watch<_SliderModel>();
+    final percent = 1 - (slideShowModel._currentPage - index);
     final value = percent.clamp(0.0, 1.0);
 
-    final condition = (slideshoModel.currentPage >= index - 0.5 &&
-        slideshoModel.currentPage < index + 0.5);
-    final dotSize =condition ? slideshoModel.primaryBullet : slideshoModel.secundaryBullet;
+    final condition = (slideShowModel.currentPage >= index - 0.5 &&
+        slideShowModel.currentPage < index + 0.5);
+    final dotSize = condition
+        ? slideShowModel.primaryBullet
+        : slideShowModel.secondaryBullet;
     return Center(
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),
@@ -128,12 +136,12 @@ class _Dot extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 5),
         height: dotSize,
         transformAlignment: Alignment.center,
-        transform: Matrix4.identity()..rotateZ(value*2),
+        transform: Matrix4.identity()..rotateZ(value * 2),
         curve: dotsCurve,
         decoration: BoxDecoration(
           color: condition
-              ? slideshoModel.primaryColor
-              : slideshoModel.secundaryColor,
+              ? slideShowModel.primaryColor
+              : slideShowModel.secondaryColor,
           shape: BoxShape.circle,
         ),
       ),
@@ -148,7 +156,8 @@ class _Slides extends StatefulWidget {
   bool animatedOpacity;
   bool scale;
 
-  _Slides(this.slides, this.animatedRotateX, this.animatedRotateZ, this.scale, this.animatedOpacity);
+  _Slides(this.slides, this.animatedRotateX, this.animatedRotateZ, this.scale,
+      this.animatedOpacity);
 
   @override
   State<_Slides> createState() => _SlidesState();
@@ -193,22 +202,19 @@ class _SlidesState extends State<_Slides> {
               child: Transform(
                 alignment: widget.animatedRotateX ? Alignment.center : null,
                 transform: Matrix4.identity()
-                
-
                   ..setEntry(
                     widget.animatedRotateX ? 3 : 1,
                     widget.animatedRotateX ? 2 : 0,
                     widget.animatedRotateX ? 0.002 : 0,
                   )
-                 ..rotateX(widget.animatedRotateX ? pi * (value - 1) : 0.0)
-                 ..rotateZ(widget.animatedRotateZ ? pi * (value-1 ): 0.0)
-              
+                  ..rotateX(widget.animatedRotateX ? pi * (value - 1) : 0.0)
+                  ..rotateZ(widget.animatedRotateZ ? pi * (value - 1) : 0.0)
                   ..scale(
                     widget.scale ? value : 1.0,
                     widget.scale ? value : 1.0,
                   )
-                 // ,
-,
+                // ,
+                ,
                 child: _Slide(
                   widget.slides[index],
                 ),
@@ -239,11 +245,11 @@ class _SliderModel with ChangeNotifier {
 
 //colors
   Color _primaryColor = Colors.blue;
-  Color _secundaryColor = Colors.grey;
+  Color _secondaryColor = Colors.grey;
 
 //dots
   double _primaryBullet = 20;
-  double _secundaryBullet = 14;
+  double _secondaryBullet = 14;
 
   double get currentPage => _currentPage;
 
@@ -253,19 +259,19 @@ class _SliderModel with ChangeNotifier {
     notifyListeners();
   }
 
-//get set corre
+//get set current
   Color get primaryColor => _primaryColor;
 
   set primaryColor(Color color) {
     _primaryColor = color;
   }
 
-  Color get secundaryColor => _secundaryColor;
-  set secundaryColor(Color color) {
-    _secundaryColor = color;
+  Color get secondaryColor => _secondaryColor;
+  set secondaryColor(Color color) {
+    _secondaryColor = color;
   }
 
-  //get set pontos
+  //get set dots
 
   double get primaryBullet => _primaryBullet;
 
@@ -273,9 +279,9 @@ class _SliderModel with ChangeNotifier {
     _primaryBullet = size;
   }
 
-  double get secundaryBullet => _secundaryBullet;
+  double get secondaryBullet => _secondaryBullet;
 
-  set secundaryBullet(double size) {
-    _secundaryBullet = size;
+  set secondaryBullet(double size) {
+    _secondaryBullet = size;
   }
 }
