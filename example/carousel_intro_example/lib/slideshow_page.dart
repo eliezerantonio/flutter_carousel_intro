@@ -13,12 +13,8 @@ class SlideShowPage extends StatelessWidget {
   }
 }
 
-<<<<<<< HEAD
-class MySlideshow extends StatelessWidget {
-  const MySlideshow({Key? key}) : super(key: key);
-=======
 class MySlideShow extends StatelessWidget {
->>>>>>> fix-typos
+  const MySlideShow({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
