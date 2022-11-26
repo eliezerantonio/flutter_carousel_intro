@@ -7,12 +7,12 @@ class SlideShowPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: MySlideshow(),
+      body: MySlideShow(),
     );
   }
 }
 
-class MySlideshow extends StatelessWidget {
+class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
