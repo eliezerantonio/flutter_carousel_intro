@@ -16,3 +16,26 @@
 * Flutter web
 * Flutter desktop
 
+## Preview
+
+
+## Installation
+
+Add `flutter_carousel_intro: ^0.0.5` to your `pubspec.yaml` dependencies. And import it:
+
+```dart
+import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
+```
+
+## How to use
+```dart
+FlutterCarouselIntro(  
+      slides: [
+        SvgPicture.asset("assets/slide-1.svg"),
+        SvgPicture.asset("assets/slide-2.svg"),
+        SvgPicture.asset("assets/slide-3.svg"),
+        SvgPicture.asset("assets/slide-4.svg"),
+        SvgPicture.asset("assets/slide-5.svg"),
+      ],
+    );
+    ```
