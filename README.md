@@ -1,5 +1,5 @@
 
  | [Português] 
- (<https://github.com/rrousselGit/provider/blob/master/resources/translations/pt_br/README.md>)
+ (<https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/resources/translation/pt_pt/README.md>)
 
 English documentation under construction
