@@ -6,6 +6,7 @@
 
 * Custom child widgets
 * Slide transition
+* Rotate transition
 
 
 ## Supported platforms
