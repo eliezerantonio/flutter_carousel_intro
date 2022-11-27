@@ -38,4 +38,4 @@ FlutterCarouselIntro(
         SvgPicture.asset("assets/slide-5.svg"),
       ],
     );
-    ```
+  ```
