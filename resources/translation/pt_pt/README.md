@@ -1,32 +1,32 @@
 
 # flutter_carousel_intro
 
-## Features 
+## Funcionalidades 
 
 * Custom child widgets
 * Slide transition
 * Rotate transition
 
 
-## Supported platforms
+## Plataformas suportadas
 
 * Flutter Android
 * Flutter iOS
 * Flutter web
 * Flutter desktop
 
-## Preview
+## Visualização
 
 
-## Installation
+## Instalação
 
-Add `flutter_carousel_intro: ^0.0.5` to your `pubspec.yaml` dependencies. And import it:
+Adicionar `flutter_carousel_intro: ^0.0.5` no seu  ficheiro de dependências`pubspec.yaml`. E importa:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
 ```
 
-## How to use
+## Como usar
 ```dart
 FlutterCarouselIntro(  
       slides: [
