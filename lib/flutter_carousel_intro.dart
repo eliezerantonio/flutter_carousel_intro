@@ -17,7 +17,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   final Curve dotsCurve;
 
   const FlutterCarouselIntro({
-    super.key,
+    Key? key, 
     required this.slides,
     this.pointsAbove = false,
     this.animatedRotateX = false,
@@ -29,7 +29,7 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.secondaryColor = Colors.grey,
     this.primaryBullet = 20,
     this.secondaryBullet = 14,
-  });
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
