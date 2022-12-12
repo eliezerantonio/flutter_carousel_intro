@@ -3,9 +3,14 @@
 
 ## Funcionalidades 
 
-* Custom child widgets
-* Slide transition
-* Rotate transition
+- [X] Custom child widgets
+- [X] Slide transition
+- [X] Rotate transition
+- [ ] Infinite Scroll
+- [ ] Forward button && Back button
+- [ ] Auto play
+
+
 
 
 ## Plataformas suportadas
@@ -37,4 +42,40 @@ FlutterCarouselIntro(
         SvgPicture.asset("assets/slide-5.svg"),
       ],
     );
+  ```
+  
+## Gif
+
+Exemplo normal:
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/normal.gif)
+
+Opacidade Animada
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/opacity.gif)
+
+```dart
+animatedOpacity: true
+```
+Escala Animada
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif)
+
+```dart
+scale: true
+  ```
+Rotação animada no eixo X
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif)
+
+```dart
+animatedRotateX: true
+  ```
+  
+  Rotação animada no eixo Z
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatey.gif)
+
+```dart
+animatedRotateZ: true
   ```
