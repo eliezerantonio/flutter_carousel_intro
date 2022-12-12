@@ -39,3 +39,41 @@ FlutterCarouselIntro(
       ],
     );
   ```
+  
+  
+## Gif
+
+Exemplo normal:
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/normal.gif)
+
+Opacidade Animada
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/opacity.gif)
+
+```dart
+animatedOpacity: true
+```
+Escala Animada
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif)
+
+```dart
+scale: true
+  ```
+Rotação animada no eixo X
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif)
+
+```dart
+animatedRotateX: true
+  ```
+  
+  Rotação animada no eixo Z
+
+![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatey.gif)
+
+```dart
+animatedRotateZ: true
+  ```
+
