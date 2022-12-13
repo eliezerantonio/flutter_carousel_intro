@@ -8,3 +8,7 @@
 ## 0.0.5
 
 * Initial documentantion.
+
+## 0.0.7
+
+* Portuguese documentation.
