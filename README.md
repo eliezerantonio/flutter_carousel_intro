@@ -3,10 +3,13 @@
 # flutter_carousel_intro
 
 ## Features 
+- [X] Custom child widgets
+- [X] Slide transition
+- [X] Rotate transition
+- [ ] Infinite Scroll
+- [ ] Forward button & Back button
+- [ ] Auto play
 
-* Custom child widgets
-* Slide transition
-* Rotate transition
 
 
 ## Supported platforms
