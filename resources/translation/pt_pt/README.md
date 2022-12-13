@@ -7,7 +7,7 @@
 - [X] Slide transition
 - [X] Rotate transition
 - [ ] Infinite Scroll
-- [ ] Forward button && Back button
+- [ ] Forward button & Back button
 - [ ] Auto play
 
 
@@ -110,6 +110,9 @@ animatedRotateX: true
 animatedRotateZ: true
   ```
   ## Exemplo com widgets personalizados
+  
+  ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/tenis3-2022-12-13_01.45.34.gif)
+  
   ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
