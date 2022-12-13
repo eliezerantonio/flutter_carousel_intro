@@ -1,6 +1,6 @@
 
 # flutter_carousel_intro
-
+ by: [Eliezer Antonio](https://github.com/eliezerantonio)
 ## Funcionalidades 
 
 - [X] Custom child widgets
