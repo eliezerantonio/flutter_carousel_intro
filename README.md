@@ -2,6 +2,8 @@
 
 # flutter_carousel_intro
 
+by:  [Eliezer António](https://github.com/eliezerantonio/) 
+
 ## Current Features 
 - [X] Custom child widgets
 - [X] Slide transition
