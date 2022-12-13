@@ -12,7 +12,7 @@
 
 
 
-## Supported platforms
+## Supported Platforms
 
 * Flutter Android
 * Flutter iOS
@@ -43,7 +43,7 @@ FlutterCarouselIntro(
     );
   ```
   
-  ## Exemplo geral
+  ## General Example
 ```dart
 class MySlideShow extends StatelessWidget {
   const MySlideShow({Key? key}) : super(key: key);
@@ -51,12 +51,10 @@ class MySlideShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
       pointsAbove: false,
-
       animatedRotateX: false,
       animatedRotateZ: true,
       scale: true,
       animatedOpacity: false,
-
       primaryBullet: 20,
       secundaryBullet: 12,
       primaryColor: Colors.pink,
@@ -75,25 +73,25 @@ class MySlideShow extends StatelessWidget {
   ```  
 ## Gif
 
-Exemplo normal:
+Normal Example:
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/normal.gif)
 
-Opacidade Animada
+Animated Opacity
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/opacity.gif)
 
 ```dart
 animatedOpacity: true
 ```
-Escala Animada
+Animated Scale
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif)
 
 ```dart
 scale: true
   ```
-Rotação animada no eixo X
+Animated Rotation on the X Axis
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif)
 
@@ -101,7 +99,7 @@ Rotação animada no eixo X
 animatedRotateX: true
   ```
   
-  Rotação animada no eixo Z
+  Animated Rotation on the Z Axis
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatey.gif)
 
@@ -109,7 +107,7 @@ animatedRotateX: true
 animatedRotateZ: true
   ```
 
- ## Exemplo com widgets personalizados
+ ## Example Using Custom Widgets
   
   ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/tenis3-2022-12-13_01.45.34.gif)
   
