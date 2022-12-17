@@ -15,9 +15,12 @@ class FlutterCarouselIntro extends StatelessWidget {
   final double primaryBullet;
   final double secondaryBullet;
   final Curve dotsCurve;
+  final ScrollPhysics? physics;
+  final double? dotsContainerHeight;
+  final double? dotsContainerWidth;
 
   const FlutterCarouselIntro({
-    Key? key, 
+    Key? key,
     required this.slides,
     this.pointsAbove = false,
     this.animatedRotateX = false,
@@ -29,18 +32,24 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.secondaryColor = Colors.grey,
     this.primaryBullet = 20,
     this.secondaryBullet = 14,
+    this.physics,
+    this.dotsContainerHeight,
+    this.dotsContainerWidth,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final _SliderModel controller = context.watch<_SliderModel>();
     return ChangeNotifierProvider(
       create: (_) => _SliderModel(),
       child: SafeArea(
         child: Center(
           child: Builder(builder: (context) {
-            context.read<_SliderModel>().primaryColor = primaryColor;
-            context.read<_SliderModel>().secondaryColor = secondaryColor;
-            context.read<_SliderModel>().primaryBullet = primaryBullet;
-            context.read<_SliderModel>().secondaryBullet = secondaryBullet;
+            controller
+              ..primaryColor = primaryColor
+              ..secondaryColor = secondaryColor
+              ..primaryBullet = primaryBullet
+              ..secondaryBullet = secondaryBullet;
             return _CreateStructureSlides(
               pointsAbove: pointsAbove,
               slides: slides,
@@ -49,6 +58,9 @@ class FlutterCarouselIntro extends StatelessWidget {
               scale: scale,
               dotsCurve: dotsCurve,
               animatedOpacity: animatedOpacity,
+              physics: physics,
+              height: dotsContainerHeight,
+              width: dotsContainerWidth,
             );
           }),
         ),
@@ -58,14 +70,18 @@ class FlutterCarouselIntro extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
-  const _CreateStructureSlides(
-      {required this.pointsAbove,
-      required this.slides,
-      required this.animatedRotateX,
-      required this.animatedRotateZ,
-      required this.scale,
-      required this.dotsCurve,
-      required this.animatedOpacity});
+  const _CreateStructureSlides({
+    required this.pointsAbove,
+    required this.slides,
+    required this.animatedRotateX,
+    required this.animatedRotateZ,
+    required this.scale,
+    required this.dotsCurve,
+    required this.animatedOpacity,
+    required this.physics,
+    required this.height,
+    required this.width,
+  });
 
   final bool pointsAbove;
   final List<Widget> slides;
@@ -74,21 +90,26 @@ class _CreateStructureSlides extends StatelessWidget {
   final bool animatedRotateZ;
   final bool scale;
   final bool animatedOpacity;
+  final ScrollPhysics? physics;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (pointsAbove) _Dots(slides.length, dotsCurve),
+        if (pointsAbove) _Dots(slides.length, dotsCurve, height, width),
         Expanded(
-            child: _Slides(
-          slides,
-          animatedRotateX,
-          animatedRotateZ,
-          scale,
-          animatedOpacity,
-        )),
-        if (!pointsAbove) _Dots(slides.length, dotsCurve),
+          child: _Slides(
+            slides,
+            animatedRotateX,
+            animatedRotateZ,
+            scale,
+            animatedOpacity,
+            physics,
+          ),
+        ),
+        if (!pointsAbove) _Dots(slides.length, dotsCurve, height, width),
       ],
     );
   }
@@ -97,13 +118,15 @@ class _CreateStructureSlides extends StatelessWidget {
 class _Dots extends StatelessWidget {
   final int totalSlides;
   final Curve dotsCurve;
+  final double? height;
+  final double? width;
 
-  const _Dots(this.totalSlides, this.dotsCurve);
+  const _Dots(this.totalSlides, this.dotsCurve, this.height, this.width);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 70,
+      width: width ?? double.infinity,
+      height: height ?? 70,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(totalSlides, (index) => _Dot(index, dotsCurve)),
@@ -128,13 +151,17 @@ class _Dot extends StatelessWidget {
     final dotSize = condition
         ? slideShowModel.primaryBullet
         : slideShowModel.secondaryBullet;
+
+    double dotWidth = dotSize * sin(pi / 4);
+    double dotHeight = dotSize * sin(pi / 4);
+
     return Center(
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),
-        width: dotSize,
+        width: dotWidth,
         alignment: Alignment.center,
         margin: const EdgeInsets.symmetric(horizontal: 5),
-        height: dotSize,
+        height: dotHeight,
         transformAlignment: Alignment.center,
         transform: Matrix4.identity()..rotateZ(value * 2),
         curve: dotsCurve,
@@ -155,9 +182,16 @@ class _Slides extends StatefulWidget {
   final bool animatedRotateZ;
   final bool animatedOpacity;
   final bool scale;
+  final ScrollPhysics? physics;
 
-  const _Slides(this.slides, this.animatedRotateX, this.animatedRotateZ,
-      this.scale, this.animatedOpacity);
+  const _Slides(
+    this.slides,
+    this.animatedRotateX,
+    this.animatedRotateZ,
+    this.scale,
+    this.animatedOpacity,
+    this.physics,
+  );
 
   @override
   State<_Slides> createState() => _SlidesState();
@@ -188,7 +222,7 @@ class _SlidesState extends State<_Slides> {
     return PageView.builder(
       itemCount: widget.slides.length,
       controller: pageViewController,
-      physics: const BouncingScrollPhysics(),
+      physics: widget.physics ?? const BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         final percent = 1 - (currentPage - index);
         final value = percent.clamp(0.0, 1.0);
