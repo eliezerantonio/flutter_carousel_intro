@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'dots.dart';
+import 'slider_model.dart';
+
 class FlutterCarouselIntro extends StatelessWidget {
   final List<Widget> slides;
   final bool pointsAbove;
@@ -39,9 +42,9 @@ class FlutterCarouselIntro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _SliderModel controller = context.watch<_SliderModel>();
+    final SliderModel controller = context.watch<SliderModel>();
     return ChangeNotifierProvider(
-      create: (_) => _SliderModel(),
+      create: (_) => SliderModel(),
       child: SafeArea(
         child: Center(
           child: Builder(builder: (context) {
@@ -98,7 +101,7 @@ class _CreateStructureSlides extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (pointsAbove) _Dots(slides.length, dotsCurve, height, width),
+        if (pointsAbove) Dots(totalSlides: slides.length, dotsCurve: dotsCurve),
         Expanded(
           child: _Slides(
             slides,
@@ -109,69 +112,9 @@ class _CreateStructureSlides extends StatelessWidget {
             physics,
           ),
         ),
-        if (!pointsAbove) _Dots(slides.length, dotsCurve, height, width),
+        if (!pointsAbove)
+          Dots(totalSlides: slides.length, dotsCurve: dotsCurve),
       ],
-    );
-  }
-}
-
-class _Dots extends StatelessWidget {
-  final int totalSlides;
-  final Curve dotsCurve;
-  final double? height;
-  final double? width;
-
-  const _Dots(this.totalSlides, this.dotsCurve, this.height, this.width);
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: width ?? double.infinity,
-      height: height ?? 70,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(totalSlides, (index) => _Dot(index, dotsCurve)),
-      ),
-    );
-  }
-}
-
-class _Dot extends StatelessWidget {
-  const _Dot(this.index, this.dotsCurve);
-  final int index;
-  final Curve dotsCurve;
-
-  @override
-  Widget build(BuildContext context) {
-    final slideShowModel = context.watch<_SliderModel>();
-    final percent = 1 - (slideShowModel._currentPage - index);
-    final value = percent.clamp(0.0, 1.0);
-
-    final condition = (slideShowModel.currentPage >= index - 0.5 &&
-        slideShowModel.currentPage < index + 0.5);
-    final dotSize = condition
-        ? slideShowModel.primaryBullet
-        : slideShowModel.secondaryBullet;
-
-    double dotWidth = dotSize * sin(pi / 4);
-    double dotHeight = dotSize * sin(pi / 4);
-
-    return Center(
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
-        width: dotWidth,
-        alignment: Alignment.center,
-        margin: const EdgeInsets.symmetric(horizontal: 5),
-        height: dotHeight,
-        transformAlignment: Alignment.center,
-        transform: Matrix4.identity()..rotateZ(value * 2),
-        curve: dotsCurve,
-        decoration: BoxDecoration(
-          color: condition
-              ? slideShowModel.primaryColor
-              : slideShowModel.secondaryColor,
-          shape: BoxShape.circle,
-        ),
-      ),
     );
   }
 }
@@ -205,7 +148,7 @@ class _SlidesState extends State<_Slides> {
     pageViewController.addListener(() {
       //update provider
 
-      context.read<_SliderModel>().currentPage = pageViewController.page!;
+      context.read<SliderModel>().currentPage = pageViewController.page!;
     });
     super.initState();
   }
@@ -218,7 +161,7 @@ class _SlidesState extends State<_Slides> {
 
   @override
   Widget build(BuildContext context) {
-    final currentPage = context.watch<_SliderModel>().currentPage;
+    final currentPage = context.watch<SliderModel>().currentPage;
     return PageView.builder(
       itemCount: widget.slides.length,
       controller: pageViewController,
@@ -269,25 +212,5 @@ class _Slide extends StatelessWidget {
       padding: const EdgeInsets.all(30),
       child: slide,
     );
-  }
-}
-
-class _SliderModel with ChangeNotifier {
-  double _currentPage = 0.0;
-
-//colors
-  Color primaryColor = Colors.blue;
-  Color secondaryColor = Colors.grey;
-
-//dots
-  double primaryBullet = 20;
-  double secondaryBullet = 14;
-
-  double get currentPage => _currentPage;
-
-  set currentPage(double currentPage) {
-    _currentPage = currentPage;
-
-    notifyListeners();
   }
 }
