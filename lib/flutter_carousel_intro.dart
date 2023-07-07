@@ -21,6 +21,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   final ScrollPhysics? physics;
   final double? dotsContainerHeight;
   final double? dotsContainerWidth;
+  final PageController? controller;
 
   const FlutterCarouselIntro({
     Key? key,
@@ -38,17 +39,18 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.physics,
     this.dotsContainerHeight,
     this.dotsContainerWidth,
+    this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final SliderModel controller = context.watch<SliderModel>();
+    final SliderModel slideModelController = context.watch<SliderModel>();
     return ChangeNotifierProvider(
       create: (_) => SliderModel(),
       child: SafeArea(
         child: Center(
           child: Builder(builder: (context) {
-            controller
+            slideModelController
               ..primaryColor = primaryColor
               ..secondaryColor = secondaryColor
               ..primaryBullet = primaryBullet
@@ -64,6 +66,7 @@ class FlutterCarouselIntro extends StatelessWidget {
               physics: physics,
               height: dotsContainerHeight,
               width: dotsContainerWidth,
+              pageViewController: controller,
             );
           }),
         ),
@@ -73,18 +76,18 @@ class FlutterCarouselIntro extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
-  const _CreateStructureSlides({
-    required this.pointsAbove,
-    required this.slides,
-    required this.animatedRotateX,
-    required this.animatedRotateZ,
-    required this.scale,
-    required this.dotsCurve,
-    required this.animatedOpacity,
-    required this.physics,
-    required this.height,
-    required this.width,
-  });
+  const _CreateStructureSlides(
+      {required this.pointsAbove,
+      required this.slides,
+      required this.animatedRotateX,
+      required this.animatedRotateZ,
+      required this.scale,
+      required this.dotsCurve,
+      required this.animatedOpacity,
+      required this.physics,
+      required this.height,
+      required this.width,
+      required this.pageViewController});
 
   final bool pointsAbove;
   final List<Widget> slides;
@@ -96,6 +99,7 @@ class _CreateStructureSlides extends StatelessWidget {
   final ScrollPhysics? physics;
   final double? height;
   final double? width;
+  final PageController? pageViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +114,7 @@ class _CreateStructureSlides extends StatelessWidget {
             scale,
             animatedOpacity,
             physics,
+            pageViewController,
           ),
         ),
         if (!pointsAbove)
@@ -126,6 +131,7 @@ class _Slides extends StatefulWidget {
   final bool animatedOpacity;
   final bool scale;
   final ScrollPhysics? physics;
+  final PageController? pageViewController;
 
   const _Slides(
     this.slides,
@@ -134,6 +140,7 @@ class _Slides extends StatefulWidget {
     this.scale,
     this.animatedOpacity,
     this.physics,
+    this.pageViewController,
   );
 
   @override
@@ -141,7 +148,8 @@ class _Slides extends StatefulWidget {
 }
 
 class _SlidesState extends State<_Slides> {
-  final pageViewController = PageController();
+  late PageController pageViewController =
+      widget.pageViewController ?? PageController();
 
   @override
   void initState() {
