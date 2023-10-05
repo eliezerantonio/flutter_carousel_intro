@@ -1,8 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'dots.dart';
 import 'slider_model.dart';
 
@@ -46,33 +44,95 @@ class FlutterCarouselIntro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SliderModel slideModelController = context.watch<SliderModel>();
     return ChangeNotifierProvider<SliderModel>(
       create: (_) => SliderModel(),
-      child: SafeArea(
-        child: Center(
-          child: Builder(builder: (context) {
-            slideModelController
-              ..primaryColor = primaryColor
-              ..secondaryColor = secondaryColor
-              ..primaryBullet = primaryBullet
-              ..secondaryBullet = secondaryBullet;
-            return _CreateStructureSlides(
-              pointsAbove: pointsAbove,
-              slides: slides,
-              animatedRotateX: animatedRotateX,
-              animatedRotateZ: animatedRotateZ,
-              scale: scale,
-              dotsCurve: dotsCurve,
-              animatedOpacity: animatedOpacity,
-              physics: physics,
-              height: dotsContainerHeight,
-              width: dotsContainerWidth,
-              pageViewController: controller,
-              scrollDirection: scrollDirection,
-            );
-          }),
-        ),
+      child: _FlutterCarousel(
+        primaryColor: primaryColor,
+        secondaryColor: secondaryColor,
+        primaryBullet: primaryBullet,
+        secondaryBullet: secondaryBullet,
+        pointsAbove: pointsAbove,
+        slides: slides,
+        animatedRotateX: animatedRotateX,
+        animatedRotateZ: animatedRotateZ,
+        scale: scale,
+        dotsCurve: dotsCurve,
+        animatedOpacity: animatedOpacity,
+        physics: physics,
+        dotsContainerHeight: dotsContainerHeight,
+        dotsContainerWidth: dotsContainerWidth,
+        controller: controller,
+        scrollDirection: scrollDirection,
+      ),
+    );
+  }
+}
+
+class _FlutterCarousel extends StatelessWidget {
+  const _FlutterCarousel({
+    Key? key,
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.primaryBullet,
+    required this.secondaryBullet,
+    required this.pointsAbove,
+    required this.slides,
+    required this.animatedRotateX,
+    required this.animatedRotateZ,
+    required this.scale,
+    required this.dotsCurve,
+    required this.animatedOpacity,
+    required this.physics,
+    required this.dotsContainerHeight,
+    required this.dotsContainerWidth,
+    required this.controller,
+    required this.scrollDirection,
+  }) : super(key: key);
+
+  final Color primaryColor;
+  final Color secondaryColor;
+  final double primaryBullet;
+  final double secondaryBullet;
+  final bool pointsAbove;
+  final List<Widget> slides;
+  final bool animatedRotateX;
+  final bool animatedRotateZ;
+  final bool scale;
+  final Curve dotsCurve;
+  final bool animatedOpacity;
+  final ScrollPhysics? physics;
+  final double? dotsContainerHeight;
+  final double? dotsContainerWidth;
+  final PageController? controller;
+  final Axis? scrollDirection;
+
+  @override
+  Widget build(BuildContext context) {
+    final slideModelController = context.watch<SliderModel>();
+
+    return SafeArea(
+      child: Center(
+        child: Builder(builder: (context) {
+          slideModelController
+            ..primaryColor = primaryColor
+            ..secondaryColor = secondaryColor
+            ..primaryBullet = primaryBullet
+            ..secondaryBullet = secondaryBullet;
+          return _CreateStructureSlides(
+            pointsAbove: pointsAbove,
+            slides: slides,
+            animatedRotateX: animatedRotateX,
+            animatedRotateZ: animatedRotateZ,
+            scale: scale,
+            dotsCurve: dotsCurve,
+            animatedOpacity: animatedOpacity,
+            physics: physics,
+            height: dotsContainerHeight,
+            width: dotsContainerWidth,
+            pageViewController: controller,
+            scrollDirection: scrollDirection,
+          );
+        }),
       ),
     );
   }
