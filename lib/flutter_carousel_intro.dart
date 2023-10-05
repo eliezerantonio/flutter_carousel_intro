@@ -22,6 +22,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   final double? dotsContainerHeight;
   final double? dotsContainerWidth;
   final PageController? controller;
+  final Axis? scrollDirection;
 
   const FlutterCarouselIntro({
     Key? key,
@@ -40,12 +41,13 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.dotsContainerHeight,
     this.dotsContainerWidth,
     this.controller,
+    this.scrollDirection,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final SliderModel slideModelController = context.watch<SliderModel>();
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider<SliderModel>(
       create: (_) => SliderModel(),
       child: SafeArea(
         child: Center(
@@ -67,6 +69,7 @@ class FlutterCarouselIntro extends StatelessWidget {
               height: dotsContainerHeight,
               width: dotsContainerWidth,
               pageViewController: controller,
+              scrollDirection: scrollDirection,
             );
           }),
         ),
@@ -76,18 +79,20 @@ class FlutterCarouselIntro extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
-  const _CreateStructureSlides(
-      {required this.pointsAbove,
-      required this.slides,
-      required this.animatedRotateX,
-      required this.animatedRotateZ,
-      required this.scale,
-      required this.dotsCurve,
-      required this.animatedOpacity,
-      required this.physics,
-      required this.height,
-      required this.width,
-      required this.pageViewController});
+  const _CreateStructureSlides({
+    required this.pointsAbove,
+    required this.slides,
+    required this.animatedRotateX,
+    required this.animatedRotateZ,
+    required this.scale,
+    required this.dotsCurve,
+    required this.animatedOpacity,
+    required this.physics,
+    required this.height,
+    required this.width,
+    this.scrollDirection,
+    required this.pageViewController,
+  });
 
   final bool pointsAbove;
   final List<Widget> slides;
@@ -99,6 +104,7 @@ class _CreateStructureSlides extends StatelessWidget {
   final ScrollPhysics? physics;
   final double? height;
   final double? width;
+  final Axis? scrollDirection;
   final PageController? pageViewController;
 
   @override
@@ -115,10 +121,10 @@ class _CreateStructureSlides extends StatelessWidget {
             animatedOpacity,
             physics,
             pageViewController,
+            scrollDirection: scrollDirection,
           ),
         ),
-        if (!pointsAbove)
-          Dots(totalSlides: slides.length, dotsCurve: dotsCurve),
+        if (!pointsAbove) Dots(totalSlides: slides.length, dotsCurve: dotsCurve),
       ],
     );
   }
@@ -132,6 +138,7 @@ class _Slides extends StatefulWidget {
   final bool scale;
   final ScrollPhysics? physics;
   final PageController? pageViewController;
+  final Axis? scrollDirection;
 
   const _Slides(
     this.slides,
@@ -140,16 +147,16 @@ class _Slides extends StatefulWidget {
     this.scale,
     this.animatedOpacity,
     this.physics,
-    this.pageViewController,
-  );
+    this.pageViewController, {
+    this.scrollDirection,
+  });
 
   @override
   State<_Slides> createState() => _SlidesState();
 }
 
 class _SlidesState extends State<_Slides> {
-  late PageController pageViewController =
-      widget.pageViewController ?? PageController();
+  late PageController pageViewController = widget.pageViewController ?? PageController();
 
   @override
   void initState() {
@@ -173,6 +180,7 @@ class _SlidesState extends State<_Slides> {
     return PageView.builder(
       itemCount: widget.slides.length,
       controller: pageViewController,
+      scrollDirection: widget.scrollDirection ?? Axis.horizontal,
       physics: widget.physics ?? const BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         final percent = 1 - (currentPage - index);
