@@ -13,7 +13,7 @@
 
 * Portuguese documentation.
   
-## 0.0.8
+## 0.0.10
 
 * in this version you can set different slide direction (Vertial or Horizontal)
 
