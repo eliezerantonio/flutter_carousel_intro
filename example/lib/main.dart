@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
+import 'package:flutter_carousel_intro/slider_model.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<SliderModel>(
+      create: (_) => SliderModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -53,6 +60,7 @@ class MySlideShow extends StatelessWidget {
       primaryColor: Colors.pink,
       secondaryColor: Colors.grey,
       dotsCurve: Curves.slowMiddle,
+      scrollDirection: Axis.horizontal,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
         SvgPicture.asset("assets/slide-2.svg"),
