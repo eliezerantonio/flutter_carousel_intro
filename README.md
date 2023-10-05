@@ -58,6 +58,7 @@ class MySlideShow extends StatelessWidget {
       scale: true,
       animatedOpacity: false,
       primaryBullet: 20,
+      scrollDirection: Axis.horizontal,
       secundaryBullet: 12,
       primaryColor: Colors.pink,
       secundaryColor: Colors.grey,
