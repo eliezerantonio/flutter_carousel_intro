@@ -1,11 +1,11 @@
 name: flutter_carousel_intro
 description: A Carousel widget for introductory presentation.
-version: 0.0.7
+version: 0.0.8
 homepage: https://eliezer-antonio-9108b.web.app/
 repository: https://github.com/eliezerantonio/flutter_carousel_intro
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
