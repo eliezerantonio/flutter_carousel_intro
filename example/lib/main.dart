@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
+import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:flutter_svg/svg.dart';
 
 void main() {
@@ -44,7 +45,7 @@ class MySlideShow extends StatelessWidget {
       animatedRotateX: false,
       animatedRotateZ: true,
       scale: true,
-      autoPlay: false,
+      autoPlay: true,
       autoPlaySlideDuration: const Duration(seconds: 2),
       animatedOpacity: true,
       primaryBullet: 20,
@@ -52,7 +53,8 @@ class MySlideShow extends StatelessWidget {
       primaryColor: Colors.pink,
       secondaryColor: Colors.grey,
       dotsCurve: Curves.easeInOutCubicEmphasized,
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
+      indicatorAlign: IndicatorAlign.left,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
         SvgPicture.asset("assets/slide-2.svg"),
