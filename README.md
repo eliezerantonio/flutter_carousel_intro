@@ -2,37 +2,41 @@
 
 # flutter_carousel_intro
 
-by:  [Eliezer António](https://github.com/eliezerantonio/) 
+by:  [Eliezer António](https://github.com/eliezerantonio/)
 
-## Current Features 
+## Current Features
+
 - [X] Custom child widgets
 - [X] Slide transition
 - [X] Rotate transition
-# Features to be implemented
-- [ ] Infinite Scroll 
-- [ ] Forward button & Back button 
-- [ ] Auto play
+- [X] Auto play
+- [X] Horizontal transition
+- [X] Vertical transition
 
+# Features to be implemented
+
+- [ ] Infinite Scroll
+- [ ] Forward button & Back button (i'snt very important)
 
 ## Supported Platforms
 
-* Flutter Android
-* Flutter iOS
-* Flutter web
-* Flutter desktop
+- Flutter Android
+- Flutter iOS
+- Flutter web
+- Flutter desktop
 
 ## Preview
 
-
 ## Installation
 
-Add `flutter_carousel_intro: ^0.0.7` to your `pubspec.yaml` dependencies. And import it:
+Add `flutter_carousel_intro: ^0.0.11` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
 ```
 
 ## How to use
+
 ```dart
 FlutterCarouselIntro(  
       slides: [
@@ -45,19 +49,21 @@ FlutterCarouselIntro(
     );
   ```
   
-  ## General Example
+## General Example
+
 ```dart
 class MySlideShow extends StatelessWidget {
   const MySlideShow({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
-      pointsAbove: false,
+      indicatorAlign: IndicatorAlign.bottom,
       animatedRotateX: false,
       animatedRotateZ: true,
       scale: true,
       animatedOpacity: false,
       primaryBullet: 20,
+      autoPlay: false,
       scrollDirection: Axis.horizontal,
       secundaryBullet: 12,
       primaryColor: Colors.pink,
@@ -74,6 +80,7 @@ class MySlideShow extends StatelessWidget {
   }
 }
   ```  
+
 ## Gif
 
 Normal Example:
@@ -87,6 +94,7 @@ Animated Opacity
 ```dart
 animatedOpacity: true
 ```
+
 Animated Scale
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif)
@@ -94,6 +102,7 @@ Animated Scale
 ```dart
 scale: true
   ```
+
 Animated Rotation on the X Axis
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif)
@@ -110,7 +119,7 @@ animatedRotateX: true
 animatedRotateZ: true
   ```
 
- ## Example Using Custom Widgets
+## Example Using Custom Widgets
   
   ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/tenis3-2022-12-13_01.45.34.gif)
   
@@ -274,7 +283,8 @@ class SlideFive extends StatelessWidget {
 
 
   ```
-  ## My Packages:
+
+## My Packages
   
-  [Flutter Responsivity Widget](https://pub.dev/packages/flutter_responsivity_widget)) 
+  [Flutter Responsivity Widget](https://pub.dev/packages/flutter_responsivity_widget))
   
