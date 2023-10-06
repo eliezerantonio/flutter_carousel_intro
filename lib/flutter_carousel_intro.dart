@@ -53,32 +53,9 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.scrollDirection = Axis.horizontal,
     this.indicatorAlign,
     this.pageIndicator,
-    this.indicatorEffect,
+    this.indicatorEffect, this.autoPlaySlideDurationTransition, this.autoPlaySlideDurationCurve,
   }) : super(key: key);
 
-  const FlutterCarouselIntro(
-      {Key? key,
-      required this.slides,
-      this.animatedRotateX = false,
-      this.animatedRotateZ = false,
-      this.animatedOpacity = false,
-      this.autoPlay = false,
-      this.autoPlaySlideDuration,
-      this.scale = false,
-      this.dotsCurve = Curves.linear,
-      this.primaryColor,
-      this.secondaryColor = Colors.grey,
-      this.primaryBullet = 20,
-      this.secondaryBullet = 14,
-      this.physics,
-      this.dotsContainerHeight,
-      this.dotsContainerWidth,
-      this.controller,
-      this.autoPlaySlideDurationTransition,
-      this.scrollDirection = Axis.horizontal,
-      this.indicatorAlign,
-      this.autoPlaySlideDurationCurve})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -205,7 +182,6 @@ class _CreateStructureSlides extends StatelessWidget {
     required this.primaryColor,
     required this.secondaryColor,
     required this.autoPlaySlideDuration,
-       required this.autoPlaySlideDuration,
       required this.autoPlaySlideDurationTransition,
       required this.autoPlaySlideDurationCurve
   });
