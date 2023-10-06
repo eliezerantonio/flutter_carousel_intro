@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
@@ -11,6 +12,8 @@ class FlutterCarouselIntro extends StatelessWidget {
   final bool animatedRotateZ;
   final bool animatedOpacity;
   final bool scale;
+  final bool autoPlay;
+  final Duration? autoPlaySlideDuration;
   final Color primaryColor;
   final Color secondaryColor;
   final double primaryBullet;
@@ -29,6 +32,8 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.animatedRotateX = false,
     this.animatedRotateZ = false,
     this.animatedOpacity = false,
+    this.autoPlay = false,
+    this.autoPlaySlideDuration,
     this.scale = false,
     this.dotsCurve = Curves.linear,
     this.primaryColor = Colors.blue,
@@ -64,6 +69,9 @@ class FlutterCarouselIntro extends StatelessWidget {
         controller: controller,
         scrollDirection: scrollDirection,
         indicatorAlign: indicatorAlign,
+        autoPlay: autoPlay,
+        autoPlaySlideDuration:
+            autoPlaySlideDuration ?? const Duration(milliseconds: 500),
       ),
     );
   }
@@ -88,6 +96,8 @@ class _FlutterCarousel extends StatelessWidget {
     required this.controller,
     required this.scrollDirection,
     required this.indicatorAlign,
+    required this.autoPlay,
+    required this.autoPlaySlideDuration,
   }) : super(key: key);
 
   final Color primaryColor;
@@ -106,6 +116,8 @@ class _FlutterCarousel extends StatelessWidget {
   final PageController? controller;
   final Axis scrollDirection;
   final IndicatorAlign? indicatorAlign;
+  final bool autoPlay;
+  final Duration autoPlaySlideDuration;
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +144,8 @@ class _FlutterCarousel extends StatelessWidget {
             pageViewController: controller,
             scrollDirection: scrollDirection,
             indicatorAlign: indicatorAlign,
+            autoPlay: autoPlay,
+            autoPlaySlideDuration: autoPlaySlideDuration,
           );
         }),
       ),
@@ -153,6 +167,8 @@ class _CreateStructureSlides extends StatelessWidget {
     required this.scrollDirection,
     required this.indicatorAlign,
     required this.pageViewController,
+    required this.autoPlay,
+    required this.autoPlaySlideDuration,
   });
 
   final List<Widget> slides;
@@ -167,6 +183,8 @@ class _CreateStructureSlides extends StatelessWidget {
   final Axis scrollDirection;
   final IndicatorAlign? indicatorAlign;
   final PageController? pageViewController;
+  final bool autoPlay;
+  final Duration autoPlaySlideDuration;
 
   @override
   Widget build(BuildContext context) {
@@ -189,6 +207,8 @@ class _CreateStructureSlides extends StatelessWidget {
           physics,
           pageViewController,
           scrollDirection: scrollDirection,
+          autoPlay: autoPlay,
+          autoPlaySlideDuration: autoPlaySlideDuration,
         ),
       ],
     );
@@ -223,6 +243,8 @@ class _Slides extends StatefulWidget {
   final ScrollPhysics? physics;
   final PageController? pageViewController;
   final Axis scrollDirection;
+  final bool autoPlay;
+  final Duration autoPlaySlideDuration;
 
   const _Slides(
     this.slides,
@@ -233,6 +255,8 @@ class _Slides extends StatefulWidget {
     this.physics,
     this.pageViewController, {
     required this.scrollDirection,
+    required this.autoPlay,
+    required this.autoPlaySlideDuration,
   });
 
   @override
@@ -245,12 +269,28 @@ class _SlidesState extends State<_Slides> {
 
   @override
   void initState() {
+    if (widget.autoPlay) {
+      _playSlides();
+    }
+
     pageViewController.addListener(() {
       //update provider
-
       context.read<SliderModel>().currentPage = pageViewController.page!;
     });
     super.initState();
+  }
+
+  void _playSlides() {
+    Timer.periodic(widget.autoPlaySlideDuration, (timer) {
+      if ((pageViewController.page ?? 0) + 1 >= widget.slides.length) {
+        timer.cancel();
+      } else {
+        pageViewController.nextPage(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.ease,
+        );
+      }
+    });
   }
 
   @override
