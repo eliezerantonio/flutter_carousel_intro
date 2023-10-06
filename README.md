@@ -29,7 +29,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 
 ## Installation
 
-Add `flutter_carousel_intro: ^0.0.11` to your `pubspec.yaml` dependencies. And import it:
+Add `flutter_carousel_intro: ^0.0.12` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
@@ -57,18 +57,19 @@ class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
-      indicatorAlign: IndicatorAlign.bottom,
       animatedRotateX: false,
       animatedRotateZ: true,
       scale: true,
-      animatedOpacity: false,
+      autoPlay: true,
+      autoPlaySlideDuration: const Duration(seconds: 2),
+      animatedOpacity: true,
       primaryBullet: 20,
-      autoPlay: false,
-      scrollDirection: Axis.horizontal,
-      secundaryBullet: 12,
+      secondaryBullet: 12,
       primaryColor: Colors.pink,
-      secundaryColor: Colors.grey,
-      dotsCurve: Curves.slowMiddle,
+      secondaryColor: Colors.grey,
+      dotsCurve: Curves.easeInOutCubicEmphasized,
+      scrollDirection: Axis.vertical,
+      indicatorAlign: IndicatorAlign.left,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
         SvgPicture.asset("assets/slide-2.svg"),
@@ -165,16 +166,19 @@ class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const FlutterCarouselIntro(
-      pointsAbove: true,
       animatedRotateX: false,
-      animatedRotateZ: false,
+      animatedRotateZ: true,
       scale: true,
+      autoPlay: true,
+      autoPlaySlideDuration: const Duration(seconds: 2),
       animatedOpacity: true,
       primaryBullet: 20,
       secondaryBullet: 12,
-      primaryColor: Colors.black,
+      primaryColor: Colors.pink,
       secondaryColor: Colors.grey,
-      dotsCurve: Curves.easeIn,
+      dotsCurve: Curves.easeInOutCubicEmphasized,
+      scrollDirection: Axis.vertical,
+      indicatorAlign: IndicatorAlign.left,
       slides: [SlideOne(), SlideTwo(), SlideThree(), SlideFour(), SlideFive()],
     );
   }
