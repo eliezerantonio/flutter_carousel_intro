@@ -29,7 +29,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 
 ## Installation
 
-Add `flutter_carousel_intro: ^0.0.12` to your `pubspec.yaml` dependencies. And import it:
+Add `flutter_carousel_intro: ^1.0.0` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
@@ -58,18 +58,19 @@ class MySlideShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
       animatedRotateX: false,
-      animatedRotateZ: true,
+      animatedRotateZ: false,
       scale: true,
-      autoPlay: true,
-      autoPlaySlideDuration: const Duration(seconds: 2),
-      animatedOpacity: true,
+      autoPlay: false,
+      autoPlaySlideDuration: const Duration(milliseconds: 1000),
+      autoPlaySlideDurationTransition: const Duration(milliseconds: 4000),
+      animatedOpacity: false,
       primaryBullet: 20,
       secondaryBullet: 12,
       primaryColor: Colors.pink,
       secondaryColor: Colors.grey,
-      dotsCurve: Curves.easeInOutCubicEmphasized,
-      scrollDirection: Axis.vertical,
-      indicatorAlign: IndicatorAlign.left,
+      dotsCurve: Curves.easeIn,
+      scrollDirection: Axis.horizontal,
+      indicatorAlign: IndicatorAlign.bottom,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
         SvgPicture.asset("assets/slide-2.svg"),

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(useMaterial3: false),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
     );
@@ -46,8 +46,14 @@ class MySlideShow extends StatelessWidget {
       animatedRotateZ: true,
       scale: true,
       autoPlay: true,
-      autoPlaySlideDuration: const Duration(milliseconds: 600),
       animatedOpacity: true,
+      animatedRotateX: false,
+      animatedRotateZ: false,
+      scale: false,
+      autoPlay: false,
+      autoPlaySlideDuration: const Duration(milliseconds: 1000),
+      autoPlaySlideDurationTransition: const Duration(milliseconds: 2000),
+      animatedOpacity: false,
       primaryColor: Colors.pink,
       secondaryColor: Colors.grey,
       scrollDirection: Axis.vertical,
