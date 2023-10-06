@@ -14,7 +14,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   final bool scale;
   final bool autoPlay;
   final Duration? autoPlaySlideDuration;
-  final Color primaryColor;
+  final Color? primaryColor;
   final Color secondaryColor;
   final double primaryBullet;
   final double secondaryBullet;
@@ -36,7 +36,7 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.autoPlaySlideDuration,
     this.scale = false,
     this.dotsCurve = Curves.linear,
-    this.primaryColor = Colors.blue,
+    this.primaryColor,
     this.secondaryColor = Colors.grey,
     this.primaryBullet = 20,
     this.secondaryBullet = 14,
@@ -53,7 +53,7 @@ class FlutterCarouselIntro extends StatelessWidget {
     return ChangeNotifierProvider<SliderModel>(
       create: (_) => SliderModel(),
       child: _FlutterCarousel(
-        primaryColor: primaryColor,
+        primaryColor: primaryColor??Theme.of(context).primaryColor,
         secondaryColor: secondaryColor,
         primaryBullet: primaryBullet,
         secondaryBullet: secondaryBullet,
@@ -123,32 +123,30 @@ class _FlutterCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     final slideModelController = context.watch<SliderModel>();
 
-    return SafeArea(
-      child: Center(
-        child: Builder(builder: (context) {
-          slideModelController
-            ..primaryColor = primaryColor
-            ..secondaryColor = secondaryColor
-            ..primaryBullet = primaryBullet
-            ..secondaryBullet = secondaryBullet;
-          return _CreateStructureSlides(
-            slides: slides,
-            animatedRotateX: animatedRotateX,
-            animatedRotateZ: animatedRotateZ,
-            scale: scale,
-            dotsCurve: dotsCurve,
-            animatedOpacity: animatedOpacity,
-            physics: physics,
-            height: dotsContainerHeight,
-            width: dotsContainerWidth,
-            pageViewController: controller,
-            scrollDirection: scrollDirection,
-            indicatorAlign: indicatorAlign,
-            autoPlay: autoPlay,
-            autoPlaySlideDuration: autoPlaySlideDuration,
-          );
-        }),
-      ),
+    return Center(
+      child: Builder(builder: (context) {
+        slideModelController
+          ..primaryColor = primaryColor
+          ..secondaryColor = secondaryColor
+          ..primaryBullet = primaryBullet
+          ..secondaryBullet = secondaryBullet;
+        return _CreateStructureSlides(
+          slides: slides,
+          animatedRotateX: animatedRotateX,
+          animatedRotateZ: animatedRotateZ,
+          scale: scale,
+          dotsCurve: dotsCurve,
+          animatedOpacity: animatedOpacity,
+          physics: physics,
+          height: dotsContainerHeight,
+          width: dotsContainerWidth,
+          pageViewController: controller,
+          scrollDirection: scrollDirection,
+          indicatorAlign: indicatorAlign,
+          autoPlay: autoPlay,
+          autoPlaySlideDuration: autoPlaySlideDuration,
+        );
+      }),
     );
   }
 }
