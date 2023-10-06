@@ -58,3 +58,6 @@ indicatorAlign: IndicatorAlign.left,
  ```
 
 ****
+
+# current version
+## 1.0.0 
