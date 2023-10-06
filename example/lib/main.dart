@@ -43,7 +43,6 @@ class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
-      pointsAbove: false,
       animatedRotateX: false,
       animatedRotateZ: true,
       scale: true,
