@@ -10,9 +10,12 @@ class Dot extends StatelessWidget {
     Key? key,
     required this.index,
     required this.dotsCurve,
+    this.scrollDirection = Axis.horizontal,
   }) : super(key: key);
   final int index;
   final Curve dotsCurve;
+  final Axis scrollDirection;
+
   @override
   Widget build(BuildContext context) {
     final slideShowModel = context.watch<SliderModel>();
@@ -27,22 +30,22 @@ class Dot extends StatelessWidget {
 
     double dotWidth = dotSize * sin(pi / 4);
     double dotHeight = dotSize * sin(pi / 4);
-    return Center(
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
-        width: dotWidth,
-        alignment: Alignment.center,
-        margin: const EdgeInsets.symmetric(horizontal: 5),
-        height: dotHeight,
-        transformAlignment: Alignment.center,
-        transform: Matrix4.identity()..rotateZ(value * 2),
-        curve: dotsCurve,
-        decoration: BoxDecoration(
-          color: condition
-              ? slideShowModel.primaryColor
-              : slideShowModel.secondaryColor,
-          shape: BoxShape.circle,
-        ),
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      width: dotWidth,
+      alignment: Alignment.center,
+      margin: scrollDirection == Axis.horizontal
+          ? const EdgeInsets.all(5)
+          : const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      height: dotHeight,
+      transformAlignment: Alignment.center,
+      transform: Matrix4.identity()..rotateZ(value * 2),
+      curve: dotsCurve,
+      decoration: BoxDecoration(
+        color: condition
+            ? slideShowModel.primaryColor
+            : slideShowModel.secondaryColor,
+        shape: BoxShape.circle,
       ),
     );
   }
