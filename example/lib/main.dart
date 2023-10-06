@@ -13,9 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(useMaterial3: true),
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
     );
   }
@@ -32,7 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.white,
       body: MySlideShow(),
     );
   }
@@ -46,12 +44,12 @@ class MySlideShow extends StatelessWidget {
       animatedRotateX: false,
       animatedRotateZ: true,
       scale: true,
-      animatedOpacity: false,
+      animatedOpacity: true,
       primaryBullet: 20,
       secondaryBullet: 12,
       primaryColor: Colors.pink,
       secondaryColor: Colors.grey,
-      dotsCurve: Curves.slowMiddle,
+      dotsCurve: Curves.easeInOutCubicEmphasized,
       scrollDirection: Axis.horizontal,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),

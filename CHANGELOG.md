@@ -12,3 +12,21 @@
 ## 0.0.7
 
 * Portuguese documentation.
+  
+## 0.0.10
+
+* in this version you can set different slide direction (Vertial or Horizontal)
+
+```dart
+
+ scrollDirection: Axis.horizontal,
+
+ ```
+
+ ```dart
+ 
+ scrollDirection: Axis.vertical,
+
+ ```
+
+****
