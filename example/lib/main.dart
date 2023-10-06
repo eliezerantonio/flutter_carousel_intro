@@ -42,6 +42,11 @@ class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
+      animatedRotateX: true,
+      animatedRotateZ: true,
+      scale: true,
+      autoPlay: true,
+      animatedOpacity: true,
       animatedRotateX: false,
       animatedRotateZ: false,
       scale: false,
@@ -49,19 +54,18 @@ class MySlideShow extends StatelessWidget {
       autoPlaySlideDuration: const Duration(milliseconds: 1000),
       autoPlaySlideDurationTransition: const Duration(milliseconds: 2000),
       animatedOpacity: false,
-      primaryBullet: 20,
-      secondaryBullet: 12,
       primaryColor: Colors.pink,
       secondaryColor: Colors.grey,
-      dotsCurve: Curves.easeInOutCubicEmphasized,
       scrollDirection: Axis.vertical,
       indicatorAlign: IndicatorAlign.left,
+      indicatorEffect: IndicatorEffects.worm,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
         SvgPicture.asset("assets/slide-2.svg"),
         SvgPicture.asset("assets/slide-3.svg"),
         SvgPicture.asset("assets/slide-4.svg"),
         SvgPicture.asset("assets/slide-5.svg"),
+
       ],
     );
   }

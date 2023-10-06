@@ -1,9 +1,18 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/color_transition_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/expanding_dots_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/indicator_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/jumping_dot_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/scale_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/scrolling_dots_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/slide_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/swap_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/effects/worm_effect.dart';
+import 'package:flutter_carousel_intro/page_indicator/page_indicator.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:provider/provider.dart';
-import 'dots.dart';
 import 'slider_model.dart';
 
 class FlutterCarouselIntro extends StatelessWidget {
@@ -16,17 +25,36 @@ class FlutterCarouselIntro extends StatelessWidget {
   final Duration? autoPlaySlideDuration;
   final Color? primaryColor;
   final Color secondaryColor;
-  final double primaryBullet;
-  final double secondaryBullet;
-  final Curve dotsCurve;
   final ScrollPhysics? physics;
   final double? dotsContainerHeight;
   final double? dotsContainerWidth;
   final PageController? controller;
   final Axis scrollDirection;
   final IndicatorAlign? indicatorAlign;
+  final PageIndicator? pageIndicator;
+  final IndicatorEffects? indicatorEffect;
   final Duration? autoPlaySlideDurationTransition;
   final Curve? autoPlaySlideDurationCurve;
+  const FlutterCarouselIntro({
+    Key? key,
+    required this.slides,
+    this.animatedRotateX = false,
+    this.animatedRotateZ = false,
+    this.animatedOpacity = false,
+    this.autoPlay = false,
+    this.autoPlaySlideDuration,
+    this.scale = false,
+    this.primaryColor,
+    this.secondaryColor = Colors.grey,
+    this.physics,
+    this.dotsContainerHeight,
+    this.dotsContainerWidth,
+    this.controller,
+    this.scrollDirection = Axis.horizontal,
+    this.indicatorAlign,
+    this.pageIndicator,
+    this.indicatorEffect,
+  }) : super(key: key);
 
   const FlutterCarouselIntro(
       {Key? key,
@@ -59,13 +87,10 @@ class FlutterCarouselIntro extends StatelessWidget {
       child: _FlutterCarousel(
         primaryColor: primaryColor ?? Theme.of(context).primaryColor,
         secondaryColor: secondaryColor,
-        primaryBullet: primaryBullet,
-        secondaryBullet: secondaryBullet,
         slides: slides,
         animatedRotateX: animatedRotateX,
         animatedRotateZ: animatedRotateZ,
         scale: scale,
-        dotsCurve: dotsCurve,
         animatedOpacity: animatedOpacity,
         physics: physics,
         dotsContainerHeight: dotsContainerHeight,
@@ -79,45 +104,41 @@ class FlutterCarouselIntro extends StatelessWidget {
             const Duration(milliseconds: 500),
         autoPlaySlideDuration:
             autoPlaySlideDuration ?? const Duration(milliseconds: 500),
+        indicatorEffects: indicatorEffect,
       ),
     );
   }
 }
 
 class _FlutterCarousel extends StatelessWidget {
-  const _FlutterCarousel(
-      {Key? key,
-      required this.primaryColor,
-      required this.secondaryColor,
-      required this.primaryBullet,
-      required this.secondaryBullet,
-      required this.slides,
-      required this.animatedRotateX,
-      required this.animatedRotateZ,
-      required this.scale,
-      required this.dotsCurve,
-      required this.animatedOpacity,
-      required this.physics,
-      required this.dotsContainerHeight,
-      required this.dotsContainerWidth,
-      required this.controller,
-      required this.scrollDirection,
-      required this.indicatorAlign,
-      required this.autoPlay,
-      required this.autoPlaySlideDuration,
-      required this.autoPlaySlideDurationTransition,
-      required this.autoPlaySlideDurationCurve})
-      : super(key: key);
+  const _FlutterCarousel({
+    Key? key,
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.slides,
+    required this.animatedRotateX,
+    required this.animatedRotateZ,
+    required this.scale,
+    required this.animatedOpacity,
+    required this.physics,
+    required this.dotsContainerHeight,
+    required this.dotsContainerWidth,
+    required this.controller,
+    required this.scrollDirection,
+    required this.indicatorAlign,
+    required this.autoPlay,
+    required this.indicatorEffects,
+    required this.autoPlaySlideDuration,
+    required this.autoPlaySlideDurationTransition,
+    required this.autoPlaySlideDurationCurve
+  }) : super(key: key);
 
   final Color primaryColor;
   final Color secondaryColor;
-  final double primaryBullet;
-  final double secondaryBullet;
   final List<Widget> slides;
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool scale;
-  final Curve dotsCurve;
   final bool animatedOpacity;
   final ScrollPhysics? physics;
   final double? dotsContainerHeight;
@@ -127,6 +148,7 @@ class _FlutterCarousel extends StatelessWidget {
   final IndicatorAlign? indicatorAlign;
   final bool autoPlay;
   final Duration autoPlaySlideDuration;
+  final IndicatorEffects? indicatorEffects;
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
 
@@ -138,15 +160,12 @@ class _FlutterCarousel extends StatelessWidget {
       child: Builder(builder: (context) {
         slideModelController
           ..primaryColor = primaryColor
-          ..secondaryColor = secondaryColor
-          ..primaryBullet = primaryBullet
-          ..secondaryBullet = secondaryBullet;
+          ..secondaryColor = secondaryColor;
         return _CreateStructureSlides(
           slides: slides,
           animatedRotateX: animatedRotateX,
           animatedRotateZ: animatedRotateZ,
           scale: scale,
-          dotsCurve: dotsCurve,
           animatedOpacity: animatedOpacity,
           physics: physics,
           height: dotsContainerHeight,
@@ -156,8 +175,12 @@ class _FlutterCarousel extends StatelessWidget {
           indicatorAlign: indicatorAlign,
           autoPlay: autoPlay,
           autoPlaySlideDuration: autoPlaySlideDuration,
+          indicatorEffects: indicatorEffects,
+          primaryColor: primaryColor,
+          secondaryColor: secondaryColor,
           autoPlaySlideDurationTransition: autoPlaySlideDurationTransition,
           autoPlaySlideDurationCurve: autoPlaySlideDurationCurve,
+
         );
       }),
     );
@@ -165,26 +188,29 @@ class _FlutterCarousel extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
-  const _CreateStructureSlides(
-      {required this.slides,
-      required this.animatedRotateX,
-      required this.animatedRotateZ,
-      required this.scale,
-      required this.dotsCurve,
-      required this.animatedOpacity,
-      required this.physics,
-      required this.height,
-      required this.width,
-      required this.scrollDirection,
-      required this.indicatorAlign,
-      required this.pageViewController,
-      required this.autoPlay,
-      required this.autoPlaySlideDuration,
+  const _CreateStructureSlides({
+    required this.slides,
+    required this.animatedRotateX,
+    required this.animatedRotateZ,
+    required this.scale,
+    required this.animatedOpacity,
+    required this.physics,
+    required this.height,
+    required this.width,
+    required this.scrollDirection,
+    required this.indicatorAlign,
+    required this.pageViewController,
+    required this.autoPlay,
+    required this.indicatorEffects,
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.autoPlaySlideDuration,
+       required this.autoPlaySlideDuration,
       required this.autoPlaySlideDurationTransition,
-      required this.autoPlaySlideDurationCurve});
+      required this.autoPlaySlideDurationCurve
+  });
 
   final List<Widget> slides;
-  final Curve dotsCurve;
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool scale;
@@ -193,10 +219,13 @@ class _CreateStructureSlides extends StatelessWidget {
   final double? height;
   final double? width;
   final Axis scrollDirection;
+  final IndicatorEffects? indicatorEffects;
   final IndicatorAlign? indicatorAlign;
   final PageController? pageViewController;
   final bool autoPlay;
   final Duration autoPlaySlideDuration;
+  final Color primaryColor;
+  final Color secondaryColor;
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
 
@@ -204,12 +233,17 @@ class _CreateStructureSlides extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Align(
-          alignment: _getAlignmentFromIndicatorAlign(indicatorAlign),
-          child: Dots(
-            totalSlides: slides.length,
-            dotsCurve: dotsCurve,
-            scrollDirection: scrollDirection,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Align(
+            alignment: _getAlignmentFromIndicatorAlign(indicatorAlign),
+            child: PageIndicator(
+              controller: context.watch<SliderModel>().pageViewController,
+              effect: getEffectFromIndicatorEffect(
+                  indicatorEffects, primaryColor, secondaryColor, 16),
+              axisDirection: scrollDirection,
+              count: slides.length,
+            ),
           ),
         ),
         _Slides(
@@ -248,6 +282,62 @@ class _CreateStructureSlides extends StatelessWidget {
         }
     }
   }
+
+  IndicatorEffect getEffectFromIndicatorEffect(IndicatorEffects? effect,
+      Color primaryColor, Color secondaryColor, double dotSize) {
+    switch (effect) {
+      case IndicatorEffects.worm:
+        return WormEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+      case IndicatorEffects.colorTransition:
+        return ColorTransitionEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+      case IndicatorEffects.expanding:
+        return ExpandingDotsEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+
+      case IndicatorEffects.jumping:
+        return JumpingDotEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+
+      case IndicatorEffects.scale:
+        return ScaleEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+
+      case IndicatorEffects.scrolling:
+        return ScrollingDotsEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+
+      case IndicatorEffects.slide:
+        return SlideEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+
+      case IndicatorEffects.swap:
+        return SwapEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+      default:
+        return ColorTransitionEffect(
+            activeDotColor: primaryColor,
+            dotColor: secondaryColor,
+            radius: dotSize);
+    }
+  }
 }
 
 class _Slides extends StatefulWidget {
@@ -277,38 +367,42 @@ class _Slides extends StatefulWidget {
 }
 
 class _SlidesState extends State<_Slides> {
-  late PageController pageViewController =
-      widget.pageViewController ?? PageController();
-
   @override
   void initState() {
+    if (widget.pageViewController != null) {
+      context.read<SliderModel>().pageViewController =
+          widget.pageViewController!;
+    }
     if (widget.autoPlay) {
       _playSlides();
     }
 
-    pageViewController.addListener(() {
+    context.read<SliderModel>().pageViewController.addListener(() {
       //update provider
-      context.read<SliderModel>().currentPage = pageViewController.page!;
+      context.read<SliderModel>().currentPage =
+          context.read<SliderModel>().pageViewController.page!;
     });
     super.initState();
   }
 
   void _playSlides() {
     Timer.periodic(widget.autoPlaySlideDuration, (timer) {
-      if ((pageViewController.page ?? 0) + 1 >= widget.slides.length) {
+      if ((context.read<SliderModel>().pageViewController.page ?? 0) + 1 >=
+          widget.slides.length) {
         timer.cancel();
       } else {
-        pageViewController.nextPage(
-          duration: widget.autoPlaySlideDurationTransition,
+        context.read<SliderModel>().pageViewController.nextPage(
+              duration: widget.autoPlaySlideDurationTransition,
           curve: widget.autoPlaySlideDurationCurve,
-        );
+            );
+
       }
     });
   }
 
   @override
   void dispose() {
-    pageViewController.dispose();
+    context.read<SliderModel>().pageViewController.dispose();
     super.dispose();
   }
 
@@ -317,7 +411,7 @@ class _SlidesState extends State<_Slides> {
     final currentPage = context.watch<SliderModel>().currentPage;
     return PageView.builder(
       itemCount: widget.slides.length,
-      controller: pageViewController,
+      controller: context.read<SliderModel>().pageViewController,
       scrollDirection: widget.scrollDirection,
       physics: widget.physics ?? const BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
