@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(useMaterial3: false),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
     );
@@ -43,11 +43,12 @@ class MySlideShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
       animatedRotateX: false,
-      animatedRotateZ: true,
-      scale: true,
-      autoPlay: true,
-      autoPlaySlideDuration: const Duration(seconds: 2),
-      animatedOpacity: true,
+      animatedRotateZ: false,
+      scale: false,
+      autoPlay: false,
+      autoPlaySlideDuration: const Duration(milliseconds: 1000),
+      autoPlaySlideDurationTransition: const Duration(milliseconds: 2000),
+      animatedOpacity: false,
       primaryBullet: 20,
       secondaryBullet: 12,
       primaryColor: Colors.pink,
