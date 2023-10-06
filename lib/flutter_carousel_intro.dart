@@ -1,12 +1,12 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:provider/provider.dart';
 import 'dots.dart';
 import 'slider_model.dart';
 
 class FlutterCarouselIntro extends StatelessWidget {
   final List<Widget> slides;
-  final bool pointsAbove;
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool animatedOpacity;
@@ -20,12 +20,12 @@ class FlutterCarouselIntro extends StatelessWidget {
   final double? dotsContainerHeight;
   final double? dotsContainerWidth;
   final PageController? controller;
-  final Axis? scrollDirection;
+  final Axis scrollDirection;
+  final IndicatorAlign? indicatorAlign;
 
   const FlutterCarouselIntro({
     Key? key,
     required this.slides,
-    this.pointsAbove = false,
     this.animatedRotateX = false,
     this.animatedRotateZ = false,
     this.animatedOpacity = false,
@@ -39,7 +39,8 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.dotsContainerHeight,
     this.dotsContainerWidth,
     this.controller,
-    this.scrollDirection,
+    this.scrollDirection = Axis.horizontal,
+    this.indicatorAlign,
   }) : super(key: key);
 
   @override
@@ -51,7 +52,6 @@ class FlutterCarouselIntro extends StatelessWidget {
         secondaryColor: secondaryColor,
         primaryBullet: primaryBullet,
         secondaryBullet: secondaryBullet,
-        pointsAbove: pointsAbove,
         slides: slides,
         animatedRotateX: animatedRotateX,
         animatedRotateZ: animatedRotateZ,
@@ -63,6 +63,7 @@ class FlutterCarouselIntro extends StatelessWidget {
         dotsContainerWidth: dotsContainerWidth,
         controller: controller,
         scrollDirection: scrollDirection,
+        indicatorAlign: indicatorAlign,
       ),
     );
   }
@@ -75,7 +76,6 @@ class _FlutterCarousel extends StatelessWidget {
     required this.secondaryColor,
     required this.primaryBullet,
     required this.secondaryBullet,
-    required this.pointsAbove,
     required this.slides,
     required this.animatedRotateX,
     required this.animatedRotateZ,
@@ -87,13 +87,13 @@ class _FlutterCarousel extends StatelessWidget {
     required this.dotsContainerWidth,
     required this.controller,
     required this.scrollDirection,
+    required this.indicatorAlign,
   }) : super(key: key);
 
   final Color primaryColor;
   final Color secondaryColor;
   final double primaryBullet;
   final double secondaryBullet;
-  final bool pointsAbove;
   final List<Widget> slides;
   final bool animatedRotateX;
   final bool animatedRotateZ;
@@ -104,7 +104,8 @@ class _FlutterCarousel extends StatelessWidget {
   final double? dotsContainerHeight;
   final double? dotsContainerWidth;
   final PageController? controller;
-  final Axis? scrollDirection;
+  final Axis scrollDirection;
+  final IndicatorAlign? indicatorAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +120,6 @@ class _FlutterCarousel extends StatelessWidget {
             ..primaryBullet = primaryBullet
             ..secondaryBullet = secondaryBullet;
           return _CreateStructureSlides(
-            pointsAbove: pointsAbove,
             slides: slides,
             animatedRotateX: animatedRotateX,
             animatedRotateZ: animatedRotateZ,
@@ -131,6 +131,7 @@ class _FlutterCarousel extends StatelessWidget {
             width: dotsContainerWidth,
             pageViewController: controller,
             scrollDirection: scrollDirection,
+            indicatorAlign: indicatorAlign,
           );
         }),
       ),
@@ -140,7 +141,6 @@ class _FlutterCarousel extends StatelessWidget {
 
 class _CreateStructureSlides extends StatelessWidget {
   const _CreateStructureSlides({
-    required this.pointsAbove,
     required this.slides,
     required this.animatedRotateX,
     required this.animatedRotateZ,
@@ -150,11 +150,11 @@ class _CreateStructureSlides extends StatelessWidget {
     required this.physics,
     required this.height,
     required this.width,
-    this.scrollDirection,
+    required this.scrollDirection,
+    required this.indicatorAlign,
     required this.pageViewController,
   });
 
-  final bool pointsAbove;
   final List<Widget> slides;
   final Curve dotsCurve;
   final bool animatedRotateX;
@@ -164,29 +164,53 @@ class _CreateStructureSlides extends StatelessWidget {
   final ScrollPhysics? physics;
   final double? height;
   final double? width;
-  final Axis? scrollDirection;
+  final Axis scrollDirection;
+  final IndicatorAlign? indicatorAlign;
   final PageController? pageViewController;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        if (pointsAbove) Dots(totalSlides: slides.length, dotsCurve: dotsCurve),
-        Expanded(
-          child: _Slides(
-            slides,
-            animatedRotateX,
-            animatedRotateZ,
-            scale,
-            animatedOpacity,
-            physics,
-            pageViewController,
+        Align(
+          alignment: _getAlignmentFromIndicatorAlign(indicatorAlign),
+          child: Dots(
+            totalSlides: slides.length,
+            dotsCurve: dotsCurve,
             scrollDirection: scrollDirection,
           ),
         ),
-        if (!pointsAbove) Dots(totalSlides: slides.length, dotsCurve: dotsCurve),
+        _Slides(
+          slides,
+          animatedRotateX,
+          animatedRotateZ,
+          scale,
+          animatedOpacity,
+          physics,
+          pageViewController,
+          scrollDirection: scrollDirection,
+        ),
       ],
     );
+  }
+
+  Alignment _getAlignmentFromIndicatorAlign(IndicatorAlign? align) {
+    switch (align) {
+      case IndicatorAlign.left:
+        return Alignment.centerLeft;
+      case IndicatorAlign.right:
+        return Alignment.centerRight;
+      case IndicatorAlign.bottom:
+        return Alignment.bottomCenter;
+      case IndicatorAlign.top:
+        return Alignment.topCenter;
+      default:
+        if (scrollDirection == Axis.horizontal) {
+          return Alignment.bottomCenter;
+        } else {
+          return Alignment.centerLeft;
+        }
+    }
   }
 }
 
@@ -198,7 +222,7 @@ class _Slides extends StatefulWidget {
   final bool scale;
   final ScrollPhysics? physics;
   final PageController? pageViewController;
-  final Axis? scrollDirection;
+  final Axis scrollDirection;
 
   const _Slides(
     this.slides,
@@ -208,7 +232,7 @@ class _Slides extends StatefulWidget {
     this.animatedOpacity,
     this.physics,
     this.pageViewController, {
-    this.scrollDirection,
+    required this.scrollDirection,
   });
 
   @override
@@ -216,7 +240,8 @@ class _Slides extends StatefulWidget {
 }
 
 class _SlidesState extends State<_Slides> {
-  late PageController pageViewController = widget.pageViewController ?? PageController();
+  late PageController pageViewController =
+      widget.pageViewController ?? PageController();
 
   @override
   void initState() {
@@ -240,7 +265,7 @@ class _SlidesState extends State<_Slides> {
     return PageView.builder(
       itemCount: widget.slides.length,
       controller: pageViewController,
-      scrollDirection: widget.scrollDirection ?? Axis.horizontal,
+      scrollDirection: widget.scrollDirection,
       physics: widget.physics ?? const BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         final percent = 1 - (currentPage - index);
