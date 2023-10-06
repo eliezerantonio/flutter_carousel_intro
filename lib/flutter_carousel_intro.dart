@@ -329,10 +329,8 @@ class _SlidesState extends State<_Slides> {
                 ..scale(
                   widget.scale ? value : 1.0,
                   widget.scale ? value : 1.0,
-                )
-              // ,
-              ,
-              child: _Slide(
+                ),
+              child: _SlideItem(
                 widget.slides[index],
               ),
             ),
@@ -343,9 +341,9 @@ class _SlidesState extends State<_Slides> {
   }
 }
 
-class _Slide extends StatelessWidget {
+class _SlideItem extends StatelessWidget {
   final Widget slide;
-  const _Slide(this.slide);
+  const _SlideItem(this.slide);
 
   @override
   Widget build(BuildContext context) {
