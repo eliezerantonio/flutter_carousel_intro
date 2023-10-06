@@ -29,4 +29,32 @@
 
  ```
 
+## 0.0.12
+
+* in this version was implemented auto play transition
+
+```dart
+
+ autoPlay: true,
+
+ ```
+
+#### break changes
+
+* in old versions to toggle indicator for top or bottom was:
+
+ ```dart
+ 
+pointsAbove: true,
+
+ ```
+
+* this param was repleced by indicatorAlign, is an enum
+
+ ```dart
+ 
+indicatorAlign: IndicatorAlign.left,
+
+ ```
+
 ****
