@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../painters/indicator_painter.dart';
 import '../painters/slide_painter.dart';
 import 'indicator_effect.dart';

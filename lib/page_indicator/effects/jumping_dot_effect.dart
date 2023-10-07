@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-
 import '../painters/indicator_painter.dart';
 import '../painters/jumping_dot_painter.dart';
 import 'indicator_effect.dart';

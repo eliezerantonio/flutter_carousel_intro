@@ -6,8 +6,6 @@ import 'indicator_effect.dart';
 
 /// Holds painting configuration to be used by [TransitionPainter]
 class ColorTransitionEffect extends BasicIndicatorEffect {
-
-
   /// Default constructor
   const ColorTransitionEffect({
     double offset = 16.0,

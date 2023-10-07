@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-
 import '../effects/color_transition_effect.dart';
 import 'indicator_painter.dart';
 
@@ -33,12 +32,10 @@ class TransitionPainter extends BasicIndicatorPainter {
       if (i == current) {
         // ! Both a and b are non nullable
         color = Color.lerp(effect.activeDotColor, effect.dotColor, dotOffset)!;
-        dotPaint.strokeWidth =
-            max(1.5* (1 - dotOffset), effect.strokeWidth);
+        dotPaint.strokeWidth = max(1.5 * (1 - dotOffset), effect.strokeWidth);
       } else if (i - 1 == current || (i == 0 && offset > count - 1)) {
         // ! Both a and b are non nullable
-        dotPaint.strokeWidth =
-            max(1.5 * dotOffset, effect.strokeWidth);
+        dotPaint.strokeWidth = max(1.5 * dotOffset, effect.strokeWidth);
         color = Color.lerp(
             effect.activeDotColor, effect.dotColor, 1.0 - dotOffset)!;
       } else {

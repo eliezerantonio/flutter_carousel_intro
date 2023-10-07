@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../painters/expanding_dots_painter.dart';
 import '../painters/indicator_painter.dart';
 import 'indicator_effect.dart';

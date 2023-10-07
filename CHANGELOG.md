@@ -63,8 +63,6 @@ indicatorAlign: IndicatorAlign.left,
 
 ## 1.0.1
 
-####
-
 * new param was added: IndicatorEffects, is an enum
 
  ```dart

@@ -8,7 +8,6 @@ import 'indicator_painter.dart';
 /// Paints a jumping dot transition effect between active
 /// and non-active dots
 
-
 class JumpingDotPainter extends BasicIndicatorPainter {
   /// The painting configuration
   final JumpingDotEffect effect;
