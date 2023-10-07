@@ -29,7 +29,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 
 ## Installation
 
-Add `flutter_carousel_intro: ^1.0.0` to your `pubspec.yaml` dependencies. And import it:
+Add `flutter_carousel_intro: ^1.0.1` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
@@ -57,20 +57,18 @@ class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
-      animatedRotateX: false,
-      animatedRotateZ: false,
-      scale: true,
-      autoPlay: false,
-      autoPlaySlideDuration: const Duration(milliseconds: 1000),
-      autoPlaySlideDurationTransition: const Duration(milliseconds: 4000),
-      animatedOpacity: false,
-      primaryBullet: 20,
-      secondaryBullet: 12,
-      primaryColor: Colors.pink,
-      secondaryColor: Colors.grey,
-      dotsCurve: Curves.easeIn,
-      scrollDirection: Axis.horizontal,
-      indicatorAlign: IndicatorAlign.bottom,
+       animatedRotateX: false,
+        animatedRotateZ: false,
+        scale: false,
+        autoPlay: false,
+        animatedOpacity: false,
+        autoPlaySlideDuration: const Duration(milliseconds: 1000),
+        autoPlaySlideDurationTransition: const Duration(milliseconds: 1000),
+        primaryColor: Colors.pink,
+        secondaryColor: Colors.grey,
+        scrollDirection: Axis.horizontal,
+        indicatorAlign: IndicatorAlign.bottom,
+        indicatorEffect: IndicatorEffects.worm,
       slides: [
         SvgPicture.asset("assets/slide-1.svg"),
         SvgPicture.asset("assets/slide-2.svg"),
@@ -167,19 +165,18 @@ class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const FlutterCarouselIntro(
-      animatedRotateX: false,
-      animatedRotateZ: true,
-      scale: true,
-      autoPlay: true,
-      autoPlaySlideDuration: const Duration(seconds: 2),
-      animatedOpacity: true,
-      primaryBullet: 20,
-      secondaryBullet: 12,
-      primaryColor: Colors.pink,
-      secondaryColor: Colors.grey,
-      dotsCurve: Curves.easeInOutCubicEmphasized,
-      scrollDirection: Axis.vertical,
-      indicatorAlign: IndicatorAlign.left,
+        animatedRotateX: false,
+        animatedRotateZ: false,
+        scale: false,
+        autoPlay: false,
+        animatedOpacity: false,
+        autoPlaySlideDuration: const Duration(milliseconds: 1000),
+        autoPlaySlideDurationTransition: const Duration(milliseconds: 1000),
+        primaryColor: Colors.pink,
+        secondaryColor: Colors.grey,
+        scrollDirection: Axis.horizontal,
+        indicatorAlign: IndicatorAlign.bottom,
+        indicatorEffect: IndicatorEffects.worm,
       slides: [SlideOne(), SlideTwo(), SlideThree(), SlideFour(), SlideFive()],
     );
   }
