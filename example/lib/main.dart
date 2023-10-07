@@ -41,27 +41,28 @@ class MySlideShow extends StatelessWidget {
   const MySlideShow({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return FlutterCarouselIntro(
-      animatedRotateX: true,
-      animatedRotateZ: true,
-      scale: true,
-      autoPlay: true,
-      animatedOpacity: true,
-      autoPlaySlideDuration: const Duration(milliseconds: 1000),
-      autoPlaySlideDurationTransition: const Duration(milliseconds: 2000),
-      primaryColor: Colors.pink,
-      secondaryColor: Colors.grey,
-      scrollDirection: Axis.vertical,
-      indicatorAlign: IndicatorAlign.left,
-      indicatorEffect: IndicatorEffects.scrolling,
-      slides: [
-        SvgPicture.asset("assets/slide-1.svg"),
-        SvgPicture.asset("assets/slide-2.svg"),
-        SvgPicture.asset("assets/slide-3.svg"),
-        SvgPicture.asset("assets/slide-4.svg"),
-        SvgPicture.asset("assets/slide-5.svg"),
-
-      ],
+    return SafeArea(
+      child: FlutterCarouselIntro(
+        animatedRotateX: false,
+        animatedRotateZ: false,
+        scale: false,
+        autoPlay: false,
+        animatedOpacity: false,
+        autoPlaySlideDuration: const Duration(milliseconds: 1000),
+        autoPlaySlideDurationTransition: const Duration(milliseconds: 1000),
+        primaryColor: Colors.pink,
+        secondaryColor: Colors.grey,
+        scrollDirection: Axis.horizontal,
+        indicatorAlign: IndicatorAlign.bottom,
+        indicatorEffect: IndicatorEffects.worm,
+        slides: [
+          SvgPicture.asset("assets/slide-1.svg"),
+          SvgPicture.asset("assets/slide-2.svg"),
+          SvgPicture.asset("assets/slide-3.svg"),
+          SvgPicture.asset("assets/slide-4.svg"),
+          SvgPicture.asset("assets/slide-5.svg"),
+        ],
+      ),
     );
   }
 }

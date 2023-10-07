@@ -53,9 +53,10 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.scrollDirection = Axis.horizontal,
     this.indicatorAlign,
     this.pageIndicator,
-    this.indicatorEffect, this.autoPlaySlideDurationTransition, this.autoPlaySlideDurationCurve,
+    this.indicatorEffect,
+    this.autoPlaySlideDurationTransition,
+    this.autoPlaySlideDurationCurve,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,27 +89,27 @@ class FlutterCarouselIntro extends StatelessWidget {
 }
 
 class _FlutterCarousel extends StatelessWidget {
-  const _FlutterCarousel({
-    Key? key,
-    required this.primaryColor,
-    required this.secondaryColor,
-    required this.slides,
-    required this.animatedRotateX,
-    required this.animatedRotateZ,
-    required this.scale,
-    required this.animatedOpacity,
-    required this.physics,
-    required this.dotsContainerHeight,
-    required this.dotsContainerWidth,
-    required this.controller,
-    required this.scrollDirection,
-    required this.indicatorAlign,
-    required this.autoPlay,
-    required this.indicatorEffects,
-    required this.autoPlaySlideDuration,
-    required this.autoPlaySlideDurationTransition,
-    required this.autoPlaySlideDurationCurve
-  }) : super(key: key);
+  const _FlutterCarousel(
+      {Key? key,
+      required this.primaryColor,
+      required this.secondaryColor,
+      required this.slides,
+      required this.animatedRotateX,
+      required this.animatedRotateZ,
+      required this.scale,
+      required this.animatedOpacity,
+      required this.physics,
+      required this.dotsContainerHeight,
+      required this.dotsContainerWidth,
+      required this.controller,
+      required this.scrollDirection,
+      required this.indicatorAlign,
+      required this.autoPlay,
+      required this.indicatorEffects,
+      required this.autoPlaySlideDuration,
+      required this.autoPlaySlideDurationTransition,
+      required this.autoPlaySlideDurationCurve})
+      : super(key: key);
 
   final Color primaryColor;
   final Color secondaryColor;
@@ -157,7 +158,6 @@ class _FlutterCarousel extends StatelessWidget {
           secondaryColor: secondaryColor,
           autoPlaySlideDurationTransition: autoPlaySlideDurationTransition,
           autoPlaySlideDurationCurve: autoPlaySlideDurationCurve,
-
         );
       }),
     );
@@ -165,26 +165,25 @@ class _FlutterCarousel extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
-  const _CreateStructureSlides({
-    required this.slides,
-    required this.animatedRotateX,
-    required this.animatedRotateZ,
-    required this.scale,
-    required this.animatedOpacity,
-    required this.physics,
-    required this.height,
-    required this.width,
-    required this.scrollDirection,
-    required this.indicatorAlign,
-    required this.pageViewController,
-    required this.autoPlay,
-    required this.indicatorEffects,
-    required this.primaryColor,
-    required this.secondaryColor,
-    required this.autoPlaySlideDuration,
+  const _CreateStructureSlides(
+      {required this.slides,
+      required this.animatedRotateX,
+      required this.animatedRotateZ,
+      required this.scale,
+      required this.animatedOpacity,
+      required this.physics,
+      required this.height,
+      required this.width,
+      required this.scrollDirection,
+      required this.indicatorAlign,
+      required this.pageViewController,
+      required this.autoPlay,
+      required this.indicatorEffects,
+      required this.primaryColor,
+      required this.secondaryColor,
+      required this.autoPlaySlideDuration,
       required this.autoPlaySlideDurationTransition,
-      required this.autoPlaySlideDurationCurve
-  });
+      required this.autoPlaySlideDurationCurve});
 
   final List<Widget> slides;
   final bool animatedRotateX;
@@ -369,9 +368,8 @@ class _SlidesState extends State<_Slides> {
       } else {
         context.read<SliderModel>().pageViewController.nextPage(
               duration: widget.autoPlaySlideDurationTransition,
-          curve: widget.autoPlaySlideDurationCurve,
+              curve: widget.autoPlaySlideDurationCurve,
             );
-
       }
     });
   }
