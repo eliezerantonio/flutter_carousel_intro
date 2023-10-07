@@ -59,5 +59,16 @@ indicatorAlign: IndicatorAlign.left,
 
 ****
 
-# current version
-## 1.0.0 
+# release new version
+
+## 1.0.1
+
+####
+
+* new param was added: IndicatorEffects, is an enum
+
+ ```dart
+ 
+   indicatorEffect: IndicatorEffects.worm,
+
+ ```
