@@ -1,13 +1,15 @@
- [English](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/README.md) | [Português](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/resources/translation/pt_pt/README.md)
+ [English](README.md) | [Português](resources/translation/pt_pt/README.md)
 
 # flutter_carousel_intro
 
 by:  [Eliezer António](https://github.com/eliezerantonio/)
 
+![normal](gif/main_gif.gif)
+
 ## Current Features
 
 - [X] Custom child widgets
-- [X] Slide transition
+- [X] Slide **transition**
 - [X] Rotate transition
 - [X] Auto play
 - [X] Horizontal transition
@@ -85,11 +87,11 @@ class MySlideShow extends StatelessWidget {
 
 Normal Example:
 
-![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/normal.gif)
+![normal](gif/normal.gif)
 
 Animated Opacity
 
-![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/opacity.gif)
+![normal](gif/opacity.gif)
 
 ```dart
 animatedOpacity: true
@@ -97,7 +99,7 @@ animatedOpacity: true
 
 Animated Scale
 
-![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif)
+![normal](gif/scale.gif)
 
 ```dart
 scale: true
@@ -105,7 +107,7 @@ scale: true
 
 Animated Rotation on the X Axis
 
-![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif)
+![normal](gif/animated_rotatex.gif)
 
 ```dart
 animatedRotateX: true
@@ -113,7 +115,7 @@ animatedRotateX: true
   
   Animated Rotation on the Z Axis
 
-![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatey.gif)
+![normal](gif/animated_rotatey.gif)
 
 ```dart
 animatedRotateZ: true
@@ -121,7 +123,7 @@ animatedRotateZ: true
 
 ## Example Using Custom Widgets
   
-  ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/tenis3-2022-12-13_01.45.34.gif)
+  ![normal](gif/tenis3-2022-12-13_01.45.34.gif)
   
   ```dart
 import 'package:flutter/material.dart';
