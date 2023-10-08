@@ -4,7 +4,9 @@
 
 by:  [Eliezer António](https://github.com/eliezerantonio/)
 
-![normal](gif/main_gif.gif)
+
+
+<img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/main_gif.gif?raw=true" height="400">
 
 ## Current Features
 
@@ -87,11 +89,15 @@ class MySlideShow extends StatelessWidget {
 
 Normal Example:
 
-![normal](gif/normal.gif)
+
+<img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/normal.gif?raw=true" height="400">
 
 Animated Opacity
 
 ![normal](gif/opacity.gif)
+
+<img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/opacity.gif?raw=true" height="400">
+
 
 ```dart
 animatedOpacity: true
@@ -99,7 +105,9 @@ animatedOpacity: true
 
 Animated Scale
 
-![normal](gif/scale.gif)
+
+<img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif?raw=true" height="400">
+
 
 ```dart
 scale: true
@@ -107,7 +115,10 @@ scale: true
 
 Animated Rotation on the X Axis
 
-![normal](gif/animated_rotatex.gif)
+
+
+<img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif?raw=true" height="400">
+
 
 ```dart
 animatedRotateX: true
@@ -115,7 +126,8 @@ animatedRotateX: true
   
   Animated Rotation on the Z Axis
 
-![normal](gif/animated_rotatey.gif)
+
+<img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatey.gif?raw=true" height="400">
 
 ```dart
 animatedRotateZ: true
@@ -123,7 +135,9 @@ animatedRotateZ: true
 
 ## Example Using Custom Widgets
   
-  ![normal](gif/tenis3-2022-12-13_01.45.34.gif)
+
+  <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/tenis3-2022-12-13_01.45.34.gif?raw=true" height="400">
+
   
   ```dart
 import 'package:flutter/material.dart';
