@@ -19,7 +19,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 
 # Features to be implemented
 
-- [ ] Infinite Scroll
+- [ ] Repeat
 - [ ] Forward button & Back button (i'snt very important)
 
 ## Supported Platforms
