@@ -31,7 +31,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 
 ## Installation
 
-Add `flutter_carousel_intro: ^1.0.1` to your `pubspec.yaml` dependencies. And import it:
+Add `flutter_carousel_intro: ^1.0.3` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
