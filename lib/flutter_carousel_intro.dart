@@ -375,12 +375,6 @@ class _SlidesState extends State<_Slides> {
   }
 
   @override
-  void dispose() {
-    context.read<SliderModel>().pageViewController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final currentPage = context.watch<SliderModel>().currentPage;
     return PageView.builder(
