@@ -111,6 +111,7 @@ class _PageIndicatorState extends State<PageIndicator>
         onDotClicked: widget.onDotClicked,
         size: size,
         quarterTurns: quarterTurns,
+        controller: widget.controller,
       ),
     );
   }
@@ -157,6 +158,9 @@ class SmoothIndicator extends StatelessWidget {
   /// The size of canvas
   final Size size;
 
+  /// The page view controller
+  final PageController controller;
+
   /// The rotation of cans based on
   /// text directionality and [axisDirection]
   final int quarterTurns;
@@ -167,6 +171,7 @@ class SmoothIndicator extends StatelessWidget {
     required this.offset,
     required this.count,
     required this.size,
+    required this.controller,
     this.quarterTurns = 0,
     this.effect = const WormEffect(),
     this.onDotClicked,
@@ -188,11 +193,18 @@ class SmoothIndicator extends StatelessWidget {
   }
 
   void _onTap(details) {
+    int index = effect.hitTestDots(details.localPosition.dx, count, offset);
     if (onDotClicked != null) {
-      var index = effect.hitTestDots(details.localPosition.dx, count, offset);
       if (index != -1 && index != offset.toInt()) {
         onDotClicked?.call(index);
       }
+    } else {
+      /// Swipe the carousel to the current clicked indicator position
+      controller.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.ease,
+      );
     }
   }
 }

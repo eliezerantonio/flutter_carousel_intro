@@ -208,19 +208,6 @@ class _CreateStructureSlides extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Align(
-            alignment: _getAlignmentFromIndicatorAlign(indicatorAlign),
-            child: PageIndicator(
-              controller: context.watch<SliderModel>().pageViewController,
-              effect: getEffectFromIndicatorEffect(
-                  indicatorEffects, primaryColor, secondaryColor, 16),
-              axisDirection: scrollDirection,
-              count: slides.length,
-            ),
-          ),
-        ),
         _Slides(
           slides,
           animatedRotateX,
@@ -234,6 +221,19 @@ class _CreateStructureSlides extends StatelessWidget {
           autoPlaySlideDuration: autoPlaySlideDuration,
           autoPlaySlideDurationTransition: autoPlaySlideDurationTransition,
           autoPlaySlideDurationCurve: autoPlaySlideDurationCurve,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Align(
+            alignment: _getAlignmentFromIndicatorAlign(indicatorAlign),
+            child: PageIndicator(
+              controller: context.watch<SliderModel>().pageViewController,
+              effect: getEffectFromIndicatorEffect(
+                  indicatorEffects, primaryColor, secondaryColor, 16),
+              axisDirection: scrollDirection,
+              count: slides.length,
+            ),
+          ),
         ),
       ],
     );
