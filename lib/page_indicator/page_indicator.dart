@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_intro/page_indicator/smoth_indicator.dart';
 
 import 'effects/indicator_effect.dart';
 import 'effects/worm_effect.dart';
@@ -111,6 +112,7 @@ class _PageIndicatorState extends State<PageIndicator>
         onDotClicked: widget.onDotClicked,
         size: size,
         quarterTurns: quarterTurns,
+        controller: widget.controller,
       ),
     );
   }
@@ -136,63 +138,4 @@ class _PageIndicatorState extends State<PageIndicator>
 
   @override
   TextDirection? get textDirection => widget.textDirection;
-}
-
-/// Draws dot-ish representation of pages by
-/// the number of [count] and animates the active
-/// page using [offset]
-class SmoothIndicator extends StatelessWidget {
-  /// The active page offset
-  final double offset;
-
-  /// Holds effect configuration to be used in the [BasicIndicatorPainter]
-  final IndicatorEffect effect;
-
-  /// The number of pages
-  final int count;
-
-  /// Reports dot-taps
-  final OnDotClicked? onDotClicked;
-
-  /// The size of canvas
-  final Size size;
-
-  /// The rotation of cans based on
-  /// text directionality and [axisDirection]
-  final int quarterTurns;
-
-  /// Default constructor
-  const SmoothIndicator({
-    Key? key,
-    required this.offset,
-    required this.count,
-    required this.size,
-    this.quarterTurns = 0,
-    this.effect = const WormEffect(),
-    this.onDotClicked,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RotatedBox(
-      quarterTurns: quarterTurns,
-      child: GestureDetector(
-        onTapUp: _onTap,
-        child: CustomPaint(
-          size: size,
-          // rebuild the painter with the new offset every time it updates
-          painter: effect.buildPainter(count, offset),
-        ),
-      ),
-    );
-  }
-
-  void _onTap(details) {
-    if (onDotClicked != null) {
-      var index = effect.hitTestDots(details.localPosition.dx, count, offset);
-      if (index != -1 && index != offset.toInt()) {
-        onDotClicked?.call(index);
-      }
-    }
-  }
 }
