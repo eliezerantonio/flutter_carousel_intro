@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(useMaterial3: false),
-      debugShowCheckedModeBanner: false,
+      theme: ThemeData(useMaterial3: true),
+      debugShowCheckedModeBanner: true,
       home: const MyHomePage(),
     );
   }
@@ -43,18 +43,18 @@ class MySlideShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: FlutterCarouselIntro(
-        animatedRotateX: false,
-        animatedRotateZ: false,
-        scale: false,
-        autoPlay: false,
-        animatedOpacity: false,
+        animatedRotateX: true,
+        animatedRotateZ: true,
+        scale: true,
+        autoPlay: true,
+        animatedOpacity: true,
         autoPlaySlideDuration: const Duration(milliseconds: 1000),
-        autoPlaySlideDurationTransition: const Duration(milliseconds: 1000),
+        autoPlaySlideDurationTransition: const Duration(milliseconds: 1100),
         primaryColor: Colors.pink,
         secondaryColor: Colors.grey,
         scrollDirection: Axis.horizontal,
         indicatorAlign: IndicatorAlign.bottom,
-        indicatorEffect: IndicatorEffects.worm,
+        indicatorEffect: IndicatorEffects.jumping,
         slides: [
           SvgPicture.asset("assets/slide-1.svg"),
           SvgPicture.asset("assets/slide-2.svg"),
