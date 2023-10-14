@@ -15,4 +15,10 @@ class SliderModel with ChangeNotifier {
 
     notifyListeners();
   }
+
+  @override
+  void dispose() {
+    pageViewController.dispose();
+    super.dispose();
+  }
 }
