@@ -39,7 +39,7 @@
 
  ```
 
-#### break changes
+# break changes
 
 * in old versions to toggle indicator for top or bottom was:
 
@@ -70,3 +70,15 @@ indicatorAlign: IndicatorAlign.left,
    indicatorEffect: IndicatorEffects.worm,
 
  ```
+
+## from version 1.0.2 to version 1.0.4
+
+Version 1.0.5
+
+### bug fixed
+
+Looking up a deactivated widget's ancestor is unsafe #28
+
+### what's new
+
+* Swipe the carousel to the current clicked indicator

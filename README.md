@@ -4,9 +4,11 @@
 
 by:  [Eliezer António](https://github.com/eliezerantonio/)
 
-
-
 <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/main_gif.gif?raw=true" height="400">
+
+ Swipe the carousel to the current clicked indicator
+
+<img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/clicke_indicator.gif?raw=true" height="400">
 
 ## Current Features
 
@@ -16,6 +18,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 - [X] Auto play
 - [X] Horizontal transition
 - [X] Vertical transition
+- [X] Swipe the carousel to the current clicked indicator
 
 # Features to be implemented
 
@@ -33,7 +36,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 
 ## Installation
 
-Add `flutter_carousel_intro: ^1.0.3` to your `pubspec.yaml` dependencies. And import it:
+Add `flutter_carousel_intro: ^1.0.5` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
@@ -89,7 +92,6 @@ class MySlideShow extends StatelessWidget {
 
 Normal Example:
 
-
 <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/normal.gif?raw=true" height="400">
 
 Animated Opacity
@@ -98,16 +100,13 @@ Animated Opacity
 
 <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/opacity.gif?raw=true" height="400">
 
-
 ```dart
 animatedOpacity: true
 ```
 
 Animated Scale
 
-
 <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif?raw=true" height="400">
-
 
 ```dart
 scale: true
@@ -115,17 +114,13 @@ scale: true
 
 Animated Rotation on the X Axis
 
-
-
 <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif?raw=true" height="400">
-
 
 ```dart
 animatedRotateX: true
   ```
   
   Animated Rotation on the Z Axis
-
 
 <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatey.gif?raw=true" height="400">
 
@@ -135,10 +130,8 @@ animatedRotateZ: true
 
 ## Example Using Custom Widgets
   
-
   <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/tenis3-2022-12-13_01.45.34.gif?raw=true" height="400">
 
-  
   ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
