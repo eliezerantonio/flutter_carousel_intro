@@ -55,6 +55,7 @@ class MySlideShow extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         indicatorAlign: IndicatorAlign.bottom,
         indicatorEffect: IndicatorEffects.jumping,
+        showIndicators:false,
         slides: [
           SvgPicture.asset("assets/slide-1.svg"),
           SvgPicture.asset("assets/slide-2.svg"),

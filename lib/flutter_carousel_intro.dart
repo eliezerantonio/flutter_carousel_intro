@@ -35,6 +35,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   final IndicatorEffects? indicatorEffect;
   final Duration? autoPlaySlideDurationTransition;
   final Curve? autoPlaySlideDurationCurve;
+   final bool showIndicators;
   const FlutterCarouselIntro({
     Key? key,
     required this.slides,
@@ -56,6 +57,7 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.indicatorEffect,
     this.autoPlaySlideDurationTransition,
     this.autoPlaySlideDurationCurve,
+    this.showIndicators=true,
   }) : super(key: key);
 
   @override
@@ -83,6 +85,7 @@ class FlutterCarouselIntro extends StatelessWidget {
         autoPlaySlideDuration:
             autoPlaySlideDuration ?? const Duration(milliseconds: 500),
         indicatorEffects: indicatorEffect,
+        showIndicators:showIndicators
       ),
     );
   }
@@ -108,7 +111,8 @@ class _FlutterCarousel extends StatelessWidget {
       required this.indicatorEffects,
       required this.autoPlaySlideDuration,
       required this.autoPlaySlideDurationTransition,
-      required this.autoPlaySlideDurationCurve})
+      required this.autoPlaySlideDurationCurve,
+        required this.showIndicators})
       : super(key: key);
 
   final Color primaryColor;
@@ -129,6 +133,7 @@ class _FlutterCarousel extends StatelessWidget {
   final IndicatorEffects? indicatorEffects;
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
+  final  bool  showIndicators;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +162,7 @@ class _FlutterCarousel extends StatelessWidget {
           primaryColor: primaryColor,
           secondaryColor: secondaryColor,
           autoPlaySlideDurationTransition: autoPlaySlideDurationTransition,
-          autoPlaySlideDurationCurve: autoPlaySlideDurationCurve,
+          autoPlaySlideDurationCurve: autoPlaySlideDurationCurve, showIndicators: showIndicators,
         );
       }),
     );
@@ -165,6 +170,8 @@ class _FlutterCarousel extends StatelessWidget {
 }
 
 class _CreateStructureSlides extends StatelessWidget {
+
+
   const _CreateStructureSlides(
       {required this.slides,
       required this.animatedRotateX,
@@ -183,7 +190,9 @@ class _CreateStructureSlides extends StatelessWidget {
       required this.secondaryColor,
       required this.autoPlaySlideDuration,
       required this.autoPlaySlideDurationTransition,
-      required this.autoPlaySlideDurationCurve});
+      required this.autoPlaySlideDurationCurve,
+      required this.showIndicators,
+      });
 
   final List<Widget> slides;
   final bool animatedRotateX;
@@ -203,6 +212,7 @@ class _CreateStructureSlides extends StatelessWidget {
   final Color secondaryColor;
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
+  final bool showIndicators;
 
   @override
   Widget build(BuildContext context) {
@@ -222,6 +232,7 @@ class _CreateStructureSlides extends StatelessWidget {
           autoPlaySlideDurationTransition: autoPlaySlideDurationTransition,
           autoPlaySlideDurationCurve: autoPlaySlideDurationCurve,
         ),
+        if(showIndicators)
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Align(
