@@ -9,10 +9,12 @@ Para garantir que suas dependências estejam atualizadas, siga os passos a segui
 Este comando removerá arquivos temporários e caches gerados pelo Flutter no projeto.
 ```dart
 flutter clean
+```
 
 Em seguida, utilize o comando:
 Isso fará com que o Flutter obtenha novamente as dependências do projeto, garantindo que não haja problemas de cache.
 ```dart
 flutter pub upgrade
+```
 
 Após seguir esses passos, você estará pronto para trabalhar no projeto sem se preocupar com conflitos de dependências. 
