@@ -18,3 +18,4 @@ flutter pub upgrade
 ```
 
 Após seguir esses passos, você estará pronto para trabalhar no projeto sem se preocupar com conflitos de dependências. 
+![Anotação (20)](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/assets/145590545/32f237f6-1005-4d36-9c93-e91f37f6b463)
