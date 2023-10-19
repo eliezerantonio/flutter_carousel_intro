@@ -135,8 +135,6 @@ animatedRotateZ: true
   ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
-import 'package:flutter_carousel_intro/utils/enums.dart';
-import 'package:flutter_svg/svg.dart';
 
 void main() {
   runApp(const MyApp());
