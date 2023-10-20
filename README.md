@@ -1,4 +1,4 @@
- [English](README.md) | [Português](resources/translation/pt_br/README.md)
+ [English](README.md) | [Português](resources/translation/pt_pt/README.md)
 
 # flutter_carousel_intro
 
