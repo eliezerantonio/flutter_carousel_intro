@@ -3,12 +3,12 @@
  by: [Eliezer Antonio](https://github.com/eliezerantonio)
 ## Funcionalidades 
 
-- [X] Custom child widgets
-- [X] Slide transition
-- [X] Rotate transition
-- [ ] Infinite Scroll
-- [ ] Forward button & Back button
-- [ ] Auto play
+- [X] Widgets personalizados para childs
+- [X] Transição de deslize
+- [X] Transição de rotação
+- [ ]  Rolagem infinita
+- [ ] Botão Avançar e Botão Voltar
+- [ ] Reprodução automática
 
 
 
@@ -116,6 +116,8 @@ animatedRotateZ: true
   ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
+import 'package:flutter_carousel_intro/utils/enums.dart';
+import 'package:flutter_svg/svg.dart';
 
 void main() {
   runApp(const MyApp());
