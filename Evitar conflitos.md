@@ -1,4 +1,4 @@
-[Português]([resources/translation/English/Avoid-conflicts.md](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/resources/translation/English/Avoid%20conflicts.md))
+[Português](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/resources/translation/English/Avoid%20conflicts.md)
 Primeiramente, enfrentei dificuldades ao tentar executar o projeto. Por isso, optei em ser a mudança que desejo ver no mundo, criando este documento.
 O objetivo deste documento é ajudar os colaboradores a garantir que as dependências sejam atualizadas de maneira eficaz, independentemente da versão do Flutter que você está usando.
 Isso é válido não apenas para projetos Flutter; você pode aplicar esse método a outros tipos de projetos, mas os comandos serão diferentes é claro.
