@@ -42,6 +42,8 @@ Add `flutter_carousel_intro: ^1.0.5` to your `pubspec.yaml` dependencies. And im
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
 ```
 
+[Evitar Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
+
 ## How to use
 
 ```dart
@@ -295,8 +297,6 @@ class SlideFive extends StatelessWidget {
 }
 
   ```
-
-[Evitar Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
 
 ## My Packages
   
