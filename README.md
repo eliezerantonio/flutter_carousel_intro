@@ -294,8 +294,9 @@ class SlideFive extends StatelessWidget {
   }
 }
 
-
   ```
+
+[Evitar Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
 
 ## My Packages
   
