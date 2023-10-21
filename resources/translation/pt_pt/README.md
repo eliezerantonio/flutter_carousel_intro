@@ -3,12 +3,12 @@
  by: [Eliezer Antonio](https://github.com/eliezerantonio)
 ## Funcionalidades 
 
-- [X] Widgets personalizados para childs
-- [X] Transição de deslize
-- [X] Transição de rotação
-- [ ]  Rolagem infinita
-- [ ] Botão Avançar e Botão Voltar
-- [ ] Reprodução automática
+- [X] Custom child widgets
+- [X] Slide transition
+- [X] Rotate transition
+- [ ] Infinite Scroll
+- [ ] Forward button & Back button
+- [ ] Auto play
 
 
 
