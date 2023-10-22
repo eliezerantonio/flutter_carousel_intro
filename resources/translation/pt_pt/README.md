@@ -274,3 +274,10 @@ class SlideFive extends StatelessWidget {
 
 
   ```
+
+## My Packages
+  
+  [Flutter Responsivity Widget](https://pub.dev/packages/flutter_responsivity_widget))
+```dart
+  [Evitar Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
+```
