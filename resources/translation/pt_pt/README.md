@@ -30,7 +30,6 @@ Adicionar `flutter_carousel_intro: ^0.0.5` no seu  ficheiro de dependências`pub
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
 ```
-[Evitar Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
 
 ## Como usar
 ```dart
@@ -279,6 +278,4 @@ class SlideFive extends StatelessWidget {
   
   [Flutter Responsivity Widget](https://pub.dev/packages/flutter_responsivity_widget))
   
-```
   [Evitar Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
-```
