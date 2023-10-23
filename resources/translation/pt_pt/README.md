@@ -3,12 +3,12 @@
  by: [Eliezer Antonio](https://github.com/eliezerantonio)
 ## Funcionalidades 
 
-- [X] Custom child widgets
-- [X] Slide transition
-- [X] Rotate transition
-- [ ] Infinite Scroll
-- [ ] Forward button & Back button
-- [ ] Auto play
+- [X] Widgets personalizados pra childs.
+- [X] Transição de deslizamento.
+- [X] Transição de rotação.
+- [ ] Rolagem infinita.
+- [ ] Botão de Avançar e Botão de Voltar
+- [ ] Reprodução Automática.
 
 
 
@@ -276,7 +276,8 @@ class SlideFive extends StatelessWidget {
 
   ```
 
-## My Packages
+## Meus Pacotes
+
   
   [Flutter Responsivity Widget](https://pub.dev/packages/flutter_responsivity_widget))
   
