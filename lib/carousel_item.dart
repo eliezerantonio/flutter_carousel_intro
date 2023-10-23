@@ -4,8 +4,8 @@ import 'package:flutter_carousel_intro/slider_model.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:provider/provider.dart';
 
-class FlutterCarousel extends StatelessWidget {
-  const FlutterCarousel({
+class CarouselItem extends StatelessWidget {
+  const CarouselItem({
     Key? key,
     required this.primaryColor,
     required this.secondaryColor,

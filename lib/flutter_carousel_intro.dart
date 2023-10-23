@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_intro/flutter_carousel.dart';
+import 'package:flutter_carousel_intro/carousel_item.dart';
 import 'package:flutter_carousel_intro/page_indicator/page_indicator.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:provider/provider.dart';
@@ -56,7 +56,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SliderModel>(
       create: (_) => SliderModel(),
-      child: FlutterCarousel(
+      child: CarouselItem(
         primaryColor: primaryColor ?? Theme.of(context).primaryColor,
         secondaryColor: secondaryColor,
         slides: slides,
