@@ -2,8 +2,10 @@
 |
 [English](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/resources/translation/English/Avoid%20conflicts.md)
 |
+
 [Francês]
 (https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/resources/translation/French/%C3%89viter%20les%20conflits.md)
+
 
 "Tout d'abord, j'ai rencontré des difficultés en essayant d'exécuter le projet. C'est pourquoi j'ai choisi d'être le changement que je souhaite voir dans le monde en créant ce document.
 L'objectif de ce document est d'aider les collaborateurs à s'assurer que les dépendances sont mises à jour de manière efficace, quelle que soit la version de Flutter que vous utilisez.
