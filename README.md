@@ -4,6 +4,8 @@
 
 by:  [Eliezer António](https://github.com/eliezerantonio/)
 
+see in Flutter Gems: <https://fluttergems.dev/packages/flutter_carousel_intro>
+
 <img src="https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/main_gif.gif?raw=true" height="400">
 
  Swipe the carousel to the current clicked indicator
@@ -13,7 +15,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 ## Current Features
 
 - [X] Custom child widgets
-- [X] Slide **transition**
+- [X] Slide
 - [X] Rotate transition
 - [X] Auto play
 - [X] Horizontal transition
@@ -23,7 +25,7 @@ by:  [Eliezer António](https://github.com/eliezerantonio/)
 # Features to be implemented
 
 - [ ] Repeat
-- [ ] Forward button & Back button (i'snt very important)
+- [ ] Forward button & Back button (isn't very important)
 
 ## Supported Platforms
 

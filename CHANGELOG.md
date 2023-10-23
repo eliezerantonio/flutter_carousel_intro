@@ -82,3 +82,17 @@ Looking up a deactivated widget's ancestor is unsafe #28
 ### what's new
 
 * Swipe the carousel to the current clicked indicator
+
+# Version 1.0.6
+
+### bugs fixed
+
+Looking up a deactivated widget's ancestor is unsafe #28
+
+### what's new ?
+
+* Swipe the carousel to the current clicked indicator
+
+```dart
+ showIndicators:true,
+ ```
