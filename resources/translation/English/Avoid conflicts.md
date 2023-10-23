@@ -1,6 +1,8 @@
 [Portugues](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/Evitar%20conflitos.md)
 |
 [English](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/resources/translation/English/Avoid%20conflicts.md)
+|
+[French](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/resources/translation/French/%C3%89viter%20les%20conflits.md)
 
 Firstly, I encountered difficulties when trying to execute the project.
 That's why I chose to be the change I want to see in the world by creating this document.
