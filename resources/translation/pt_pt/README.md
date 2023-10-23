@@ -1,7 +1,9 @@
 
 # flutter_carousel_intro
+
  by: [Eliezer Antonio](https://github.com/eliezerantonio)
-## Funcionalidades 
+
+## Funcionalidades
 
 - [X] Widgets personalizados pra childs.
 - [X] Transição de deslizamento.
@@ -10,28 +12,25 @@
 - [ ] Botão de Avançar e Botão de Voltar
 - [ ] Reprodução Automática.
 
-
-
-
 ## Plataformas suportadas
 
-* Flutter Android
-* Flutter iOS
-* Flutter web
-* Flutter desktop
+- Flutter Android
+- Flutter iOS
+- Flutter web
+- Flutter desktop
 
 ## Visualização
 
-
 ## Instalação
 
-Adicionar `flutter_carousel_intro: ^0.0.5` no seu  ficheiro de dependências`pubspec.yaml`. E importa:
+Adicionar `flutter_carousel_intro: ^0.0.6` no seu  ficheiro de dependências`pubspec.yaml`. E importa:
 
 ```dart
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
 ```
 
 ## Como usar
+
 ```dart
 FlutterCarouselIntro(  
       slides: [
@@ -43,7 +42,9 @@ FlutterCarouselIntro(
       ],
     );
   ```
+
 ## Exemplo geral
+
 ```dart
 class MySlideShow extends StatelessWidget {
   const MySlideShow({Key? key}) : super(key: key);
@@ -87,6 +88,7 @@ Opacidade Animada
 ```dart
 animatedOpacity: true
 ```
+
 Escala Animada
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/scale.gif)
@@ -94,6 +96,7 @@ Escala Animada
 ```dart
 scale: true
   ```
+
 Rotação animada no eixo X
 
 ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/animated_rotatex.gif)
@@ -109,7 +112,8 @@ animatedRotateX: true
 ```dart
 animatedRotateZ: true
   ```
-  ## Exemplo com widgets personalizados
+
+## Exemplo com widgets personalizados
   
   ![normal](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/gif/tenis3-2022-12-13_01.45.34.gif)
   
@@ -278,7 +282,6 @@ class SlideFive extends StatelessWidget {
 
 ## Meus Pacotes
 
-  
   [Flutter Responsivity Widget](https://pub.dev/packages/flutter_responsivity_widget))
   
   [Evitar Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
