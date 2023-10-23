@@ -71,7 +71,7 @@ class FlutterCarouselIntro extends StatelessWidget {
         scrollDirection: scrollDirection,
         indicatorAlign: indicatorAlign,
         autoPlay: autoPlay,
-        autoPlaySlideDurationCurve: Curves.ease,
+        autoPlaySlideDurationCurve: autoPlaySlideDurationCurve ?? Curves.ease,
         autoPlaySlideDurationTransition: autoPlaySlideDurationTransition ??
             const Duration(milliseconds: 500),
         autoPlaySlideDuration:
