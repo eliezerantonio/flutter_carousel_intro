@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_intro/slider_item_model.dart';
 import 'package:provider/provider.dart';
-
 import 'carousel_slide_item.dart';
 import 'slider_model.dart';
 
 class CarouselSlides extends StatefulWidget {
-  final List<Widget> slides;
+  final List<SliderItem> slides;
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool animatedOpacity;
@@ -20,6 +19,10 @@ class CarouselSlides extends StatefulWidget {
   final Duration autoPlaySlideDuration;
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subtitleTextStyle;
+  final TextAlign? titleTextAlign;
+  final TextAlign? subtitleTextAlign;
 
   const CarouselSlides(
     this.slides,
@@ -30,6 +33,10 @@ class CarouselSlides extends StatefulWidget {
     this.physics,
     this.pageViewController, {
     super.key,
+    required this.titleTextStyle,
+    required this.subtitleTextStyle,
+    required this.titleTextAlign,
+    required this.subtitleTextAlign,
     required this.scrollDirection,
     required this.autoPlay,
     required this.autoPlaySlideDuration,
@@ -103,7 +110,11 @@ class CarouselSlidesState extends State<CarouselSlides> {
                 ..rotateZ(widget.animatedRotateZ ? pi * (value - 1) : 0.0)
                 ..scale(widget.scale ? value : 1.0, widget.scale ? value : 1.0),
               child: CarouselSlideItem(
-                widget.slides[index],
+                slide: widget.slides[index],
+                titleTextStyle: widget.titleTextStyle,
+                titleTextAlign: widget.titleTextAlign,
+                subtitleTextStyle: widget.subtitleTextStyle,
+                subtitleTextAlign: widget.subtitleTextAlign,
               ),
             ),
           ),

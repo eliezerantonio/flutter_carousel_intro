@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/create_structure_slides.dart';
+import 'package:flutter_carousel_intro/slider_item_model.dart';
 import 'package:flutter_carousel_intro/slider_model.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,10 @@ class CarouselItem extends StatelessWidget {
     required this.scrollDirection,
     required this.indicatorAlign,
     required this.autoPlay,
+    required this.titleTextStyle,
+    required this.subtitleTextStyle,
+    required this.titleTextAlign,
+    required this.subtitleTextAlign,
     required this.indicatorEffects,
     required this.autoPlaySlideDuration,
     required this.autoPlaySlideDurationTransition,
@@ -30,7 +35,7 @@ class CarouselItem extends StatelessWidget {
 
   final Color primaryColor;
   final Color secondaryColor;
-  final List<Widget> slides;
+  final List<SliderItem> slides;
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool scale;
@@ -47,6 +52,10 @@ class CarouselItem extends StatelessWidget {
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
   final bool showIndicators;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subtitleTextStyle;
+  final TextAlign? titleTextAlign;
+  final TextAlign? subtitleTextAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +79,10 @@ class CarouselItem extends StatelessWidget {
           scrollDirection: scrollDirection,
           indicatorAlign: indicatorAlign,
           autoPlay: autoPlay,
+          titleTextStyle: titleTextStyle,
+          titleTextAlign: titleTextAlign,
+          subtitleTextStyle: subtitleTextStyle,
+          subtitleTextAlign: subtitleTextAlign,
           autoPlaySlideDuration: autoPlaySlideDuration,
           indicatorEffects: indicatorEffects,
           primaryColor: primaryColor,

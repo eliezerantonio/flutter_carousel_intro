@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/carousel_item.dart';
 import 'package:flutter_carousel_intro/page_indicator/page_indicator.dart';
+import 'package:flutter_carousel_intro/slider_item_model.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:provider/provider.dart';
 import 'slider_model.dart';
 
 class FlutterCarouselIntro extends StatelessWidget {
   //* Slide list
-  final List<Widget> slides;
+  final List<SliderItem> slides;
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool animatedOpacity;
@@ -27,6 +28,10 @@ class FlutterCarouselIntro extends StatelessWidget {
   final Duration? autoPlaySlideDurationTransition;
   final Curve? autoPlaySlideDurationCurve;
   final bool showIndicators;
+  final TextStyle? titleTextStyle;
+  final TextAlign? titleTextAlign;
+  final TextAlign? subtitleTextAlign;
+  final TextStyle? subtitleTextStyle;
 
   const FlutterCarouselIntro({
     Key? key,
@@ -43,10 +48,14 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.dotsContainerHeight,
     this.dotsContainerWidth,
     this.controller,
+    this.titleTextStyle,
+    this.subtitleTextStyle,
     this.scrollDirection = Axis.horizontal,
     this.indicatorAlign,
     this.pageIndicator,
     this.indicatorEffect,
+    this.titleTextAlign,
+    this.subtitleTextAlign,
     this.autoPlaySlideDurationTransition,
     this.autoPlaySlideDurationCurve,
     this.showIndicators = true,
@@ -70,6 +79,10 @@ class FlutterCarouselIntro extends StatelessWidget {
         controller: controller,
         scrollDirection: scrollDirection,
         indicatorAlign: indicatorAlign,
+        titleTextStyle: titleTextStyle,
+        titleTextAlign: titleTextAlign,
+        subtitleTextStyle: subtitleTextStyle,
+        subtitleTextAlign: subtitleTextAlign,
         autoPlay: autoPlay,
         autoPlaySlideDurationCurve: autoPlaySlideDurationCurve ?? Curves.ease,
         autoPlaySlideDurationTransition: autoPlaySlideDurationTransition ??
