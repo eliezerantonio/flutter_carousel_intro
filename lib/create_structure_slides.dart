@@ -9,6 +9,7 @@ import 'package:flutter_carousel_intro/page_indicator/effects/slide_effect.dart'
 import 'package:flutter_carousel_intro/page_indicator/effects/swap_effect.dart';
 import 'package:flutter_carousel_intro/page_indicator/effects/worm_effect.dart';
 import 'package:flutter_carousel_intro/page_indicator/page_indicator.dart';
+import 'package:flutter_carousel_intro/slider_item_model.dart';
 import 'package:flutter_carousel_intro/slider_model.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:provider/provider.dart';
@@ -37,9 +38,13 @@ class CreateStructureSlides extends StatelessWidget {
     required this.autoPlaySlideDurationTransition,
     required this.autoPlaySlideDurationCurve,
     required this.showIndicators,
+    required this.titleTextStyle,
+    required this.subtitleTextStyle,
+    required this.titleTextAlign,
+    required this.subtitleTextAlign,
   });
 
-  final List<Widget> slides;
+  final List<SliderItem> slides;
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool scale;
@@ -58,6 +63,10 @@ class CreateStructureSlides extends StatelessWidget {
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
   final bool showIndicators;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subtitleTextStyle;
+  final TextAlign? titleTextAlign;
+  final TextAlign? subtitleTextAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +82,10 @@ class CreateStructureSlides extends StatelessWidget {
           pageViewController,
           scrollDirection: scrollDirection,
           autoPlay: autoPlay,
+          titleTextStyle: titleTextStyle,
+          titleTextAlign: titleTextAlign,
+          subtitleTextStyle: subtitleTextStyle,
+          subtitleTextAlign: subtitleTextAlign,
           autoPlaySlideDuration: autoPlaySlideDuration,
           autoPlaySlideDurationTransition: autoPlaySlideDurationTransition,
           autoPlaySlideDurationCurve: autoPlaySlideDurationCurve,

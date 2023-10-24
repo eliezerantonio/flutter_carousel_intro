@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
+import 'package:flutter_carousel_intro/slider_item_model.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -57,11 +58,32 @@ class MySlideShow extends StatelessWidget {
         indicatorEffect: IndicatorEffects.jumping,
         showIndicators: true,
         slides: [
-          SvgPicture.asset("assets/slide-1.svg"),
-          SvgPicture.asset("assets/slide-2.svg"),
-          SvgPicture.asset("assets/slide-3.svg"),
-          SvgPicture.asset("assets/slide-4.svg"),
-          SvgPicture.asset("assets/slide-5.svg"),
+          SliderItem(
+            title: 'Title 1',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-1.svg"),
+          ),
+          SliderItem(
+            title: 'Title 2',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-2.svg"),
+          ),
+          SliderItem(
+            title: 'Title 3',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-3.svg"),
+          ),
+          SliderItem(
+            title: 'Title 4',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-4.svg"),
+          ),
+          SliderItem(
+            title: 'Title 5',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-5.svg"),
+            subtitleTextStyle: Theme.of(context).textTheme.displayMedium,
+          ),
         ],
       ),
     );
