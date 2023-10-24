@@ -1,4 +1,4 @@
-[Portugues](https://github.com/elisioMassaqui/flutter_carousel_intro-robotgames-v/blob/main/Evitar%20conflitos.md)
+[Portugues](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
 |
 [English](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/resources/translation/English/Avoid%20conflicts.md)
 |
