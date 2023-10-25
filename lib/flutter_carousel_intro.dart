@@ -7,8 +7,6 @@ import 'package:provider/provider.dart';
 import 'slider_model.dart';
 
 class FlutterCarouselIntro extends StatelessWidget {
-
-
   final List<SliderItem> slides;
 
   //* animations transition
@@ -38,7 +36,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   final double? dotsContainerHeight;
   final double? dotsContainerWidth;
 
-  //* title and subtitle 
+  //* title and subtitle
   final TextStyle? titleTextStyle;
   final TextAlign? titleTextAlign;
   final TextAlign? subtitleTextAlign;
