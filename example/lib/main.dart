@@ -47,7 +47,7 @@ class MySlideShow extends StatelessWidget {
         animatedRotateX: false,
         animatedRotateZ: true,
         scale: true,
-        autoPlay: false,
+        autoPlay: true,
         animatedOpacity: false,
         autoPlaySlideDuration: const Duration(seconds: 2),
         autoPlaySlideDurationTransition: const Duration(milliseconds: 1100),
