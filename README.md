@@ -198,6 +198,3 @@ If you fixed a bug or implemented a feature, please send a [pull request][pr].
 ## My Packages
   
   [Flutter Responsivity Widget](https://pub.dev/packages/flutter_responsivity_widget)
-
-  [Avoid Conflitos](https://github.com/eliezerantonio/flutter_carousel_intro/blob/main/Evitar%20conflitos.md)
-  
