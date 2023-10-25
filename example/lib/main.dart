@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(useMaterial3: true),
-      debugShowCheckedModeBanner: true,
+      theme: ThemeData(useMaterial3: false),
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
     );
   }
@@ -44,19 +44,19 @@ class MySlideShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: FlutterCarouselIntro(
-        animatedRotateX: true,
+        animatedRotateX: false,
         animatedRotateZ: true,
         scale: true,
-        autoPlay: true,
-        animatedOpacity: true,
+        autoPlay: false,
+        animatedOpacity: false,
         autoPlaySlideDuration: const Duration(seconds: 2),
         autoPlaySlideDurationTransition: const Duration(milliseconds: 1100),
         primaryColor: Colors.pink,
         secondaryColor: Colors.grey,
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         indicatorAlign: IndicatorAlign.bottom,
         indicatorEffect: IndicatorEffects.jumping,
-        showIndicators: true,
+        showIndicators: false,
         slides: [
           SliderItem(
             title: 'Title 1',
@@ -82,7 +82,7 @@ class MySlideShow extends StatelessWidget {
             title: 'Title 5',
             subtitle: 'Lorem Ipsum is simply dummy text of the printing',
             widget: SvgPicture.asset("assets/slide-5.svg"),
-            subtitleTextStyle: Theme.of(context).textTheme.displayMedium,
+            subtitleTextStyle: Theme.of(context).textTheme.displaySmall,
           ),
         ],
       ),

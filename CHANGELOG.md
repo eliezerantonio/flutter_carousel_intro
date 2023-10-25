@@ -88,3 +88,69 @@ Looking up a deactivated widget's ancestor is unsafe #28
 Improve documentation
 
 bugs fixed
+
+# Version 1.0.7
+
+## break changes
+
+* in old versions slides were used as follows
+
+```dart
+FlutterCarouselIntro(  
+      slides: [
+        SvgPicture.asset("assets/slide-1.svg"),
+        SvgPicture.asset("assets/slide-2.svg"),
+        SvgPicture.asset("assets/slide-3.svg"),
+        SvgPicture.asset("assets/slide-4.svg"),
+        SvgPicture.asset("assets/slide-5.svg"),
+      ],
+    );
+  ```
+
+* now you must use SliderItem, with SliderItem, you get a free title (it's a String), subtitle (it's a String) and a widget, in the widget you can use whatever you want
+
+```dart
+FlutterCarouselIntro(  
+      slides: [
+       SliderItem(
+            title: 'Title 1',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-1.svg"),
+          ),
+          SliderItem(
+            title: 'Title 2',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-2.svg"),
+          ),
+          SliderItem(
+            title: 'Title 3',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-3.svg"),
+          ),
+          SliderItem(
+            title: 'Title 4',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-4.svg"),
+          ),
+          SliderItem(
+            title: 'Title 5',
+            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            widget: SvgPicture.asset("assets/slide-5.svg"),
+            subtitleTextStyle: Theme.of(context).textTheme.displaySmall,
+          ),
+      ],
+    );
+  ```
+
+## All SliderItem parameters
+
+```dart
+
+  String? title,
+  TextStyle? titleTextStyle,
+  TextAlign? titleTextAlign,
+  String? subtitle,
+  TextStyle? subtitleTextStyle,
+  TextAlign? subtitleTextAlign,
+
+ ```

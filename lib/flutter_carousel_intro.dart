@@ -7,27 +7,38 @@ import 'package:provider/provider.dart';
 import 'slider_model.dart';
 
 class FlutterCarouselIntro extends StatelessWidget {
-  //* Slide list
+
+
   final List<SliderItem> slides;
+
+  //* animations transition
   final bool animatedRotateX;
   final bool animatedRotateZ;
   final bool animatedOpacity;
   final bool scale;
-  final bool autoPlay;
-  final Duration? autoPlaySlideDuration;
-  final Color? primaryColor;
-  final Color secondaryColor;
+
+  //* Scroll and page view
   final ScrollPhysics? physics;
-  final double? dotsContainerHeight;
-  final double? dotsContainerWidth;
   final PageController? controller;
   final Axis scrollDirection;
-  final IndicatorAlign? indicatorAlign;
-  final PageIndicator? pageIndicator;
-  final IndicatorEffects? indicatorEffect;
+
+  //* auto play
   final Duration? autoPlaySlideDurationTransition;
   final Curve? autoPlaySlideDurationCurve;
+  final Duration? autoPlaySlideDuration;
+  final bool autoPlay;
+
+  //* indicators
+  final PageIndicator? pageIndicator;
+  final IndicatorEffects? indicatorEffect;
+  final IndicatorAlign? indicatorAlign;
   final bool showIndicators;
+  final Color? primaryColor;
+  final Color secondaryColor;
+  final double? dotsContainerHeight;
+  final double? dotsContainerWidth;
+
+  //* title and subtitle 
   final TextStyle? titleTextStyle;
   final TextAlign? titleTextAlign;
   final TextAlign? subtitleTextAlign;
