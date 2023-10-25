@@ -53,10 +53,10 @@ class MySlideShow extends StatelessWidget {
         autoPlaySlideDurationTransition: const Duration(milliseconds: 1100),
         primaryColor: Colors.pink,
         secondaryColor: Colors.grey,
-        scrollDirection: Axis.vertical,
+        scrollDirection: Axis.horizontal,
         indicatorAlign: IndicatorAlign.bottom,
         indicatorEffect: IndicatorEffects.jumping,
-        showIndicators: false,
+        showIndicators: true,
         slides: [
           SliderItem(
             title: 'Title 1',

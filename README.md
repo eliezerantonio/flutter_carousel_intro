@@ -99,11 +99,11 @@ class MySlideShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterCarouselIntro(
-        animatedRotateX: true,
+        animatedRotateX: false,
         animatedRotateZ: true,
         scale: true,
         autoPlay: true,
-        animatedOpacity: true,
+        animatedOpacity: false,
         autoPlaySlideDuration: const Duration(seconds: 2),
         autoPlaySlideDurationTransition: const Duration(milliseconds: 1100),
         primaryColor: Colors.pink,
@@ -191,6 +191,9 @@ Feel free to contribute to this project.
 
 If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue][issue].  
 If you fixed a bug or implemented a feature, please send a [pull request][pr].
+
+[issue]: https://github.com/eliezerantonio/flutter_carousel_intro/issues
+[pr]: https://github.com/eliezerantonio/flutter_carousel_intro/pulls
 
 ## My Packages
   
