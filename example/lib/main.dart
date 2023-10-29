@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(useMaterial3: false),
+      theme: ThemeData(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
     );
@@ -44,7 +44,7 @@ class MySlideShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: FlutterCarouselIntro(
-        animatedRotateX: false,
+        animatedRotateX: true,
         animatedRotateZ: true,
         scale: true,
         autoPlay: true,
@@ -60,35 +60,36 @@ class MySlideShow extends StatelessWidget {
         slides: [
           SliderItem(
             title: 'Title 1',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-1.svg"),
           ),
           SliderItem(
             title: 'Title 2',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-2.svg"),
           ),
           SliderItem(
             title: 'Title 3',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-3.svg"),
           ),
           SliderItem(
             title: 'Title 4',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-4.svg"),
           ),
           SliderItem(
             title: 'Title 5',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-5.svg"),
-            subtitleTextStyle: const TextStyle(fontWeight: FontWeight.w500),
           ),
           SliderItem(
             title: 'Title 5',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
             widget: SvgPicture.asset("assets/slide-6.svg"),
-            subtitleTextStyle: Theme.of(context).textTheme.displaySmall,
+            subtitle: ElevatedButton(
+              onPressed: () {},
+              child: const Text("skip"),
+            ),
           ),
         ],
       ),

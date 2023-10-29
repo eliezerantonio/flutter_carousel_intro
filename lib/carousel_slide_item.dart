@@ -41,18 +41,8 @@ class CarouselSlideItem extends StatelessWidget {
                         slide.titleTextAlign ??
                         TextAlign.center,
                   ),
-                if (slide.subtitle != null)
-                  Expanded(
-                    child: Text(
-                      slide.subtitle ?? '',
-                      style: subtitleTextStyle ??
-                          slide.subtitleTextStyle ??
-                          Theme.of(context).textTheme.titleMedium,
-                      textAlign: subtitleTextAlign ??
-                          slide.subtitleTextAlign ??
-                          TextAlign.center,
-                    ),
-                  ),
+                const SizedBox(height: 15),
+                if (slide.subtitle != null) Center(child: slide.subtitle!),
               ],
             ),
           )
@@ -64,7 +54,7 @@ class CarouselSlideItem extends StatelessWidget {
   double? _getSlideWidgetHeight(
     BuildContext context,
     String? title,
-    String? subtitle,
+    Widget? subtitle,
   ) {
     if (title == null && subtitle == null) {
       return MediaQuery.sizeOf(context).height * 0.8;

@@ -81,6 +81,8 @@ class CarouselSlidesState extends State<CarouselSlides> {
     });
   }
 
+ 
+
   @override
   Widget build(BuildContext context) {
     final currentPage = context.watch<SliderModel>().currentPage;

@@ -24,23 +24,16 @@ class SliderItem {
   final TextAlign? titleTextAlign;
 
   /// [subtitle] optional slide subtile
-  final String? subtitle;
+  final Widget? subtitle;
 
-  ///  [subtitle] optional subtitle TextStyle, if set it override the
-  /// top-level subtitle textStyle
-  final TextStyle? subtitleTextStyle;
-
-  ///  [subtitleTextAlign] optional subtitle TextAlign, if set it override the
-  /// top-level subtitle textAlign
-  final TextAlign? subtitleTextAlign;
+  ///  [subtitle] optional subtitle Widget, if set it override the
+  /// top-level subtitle widget
 
   const SliderItem({
     this.title,
     this.titleTextStyle,
     this.titleTextAlign,
     this.subtitle,
-    this.subtitleTextStyle,
-    this.subtitleTextAlign,
     required this.widget,
   });
 }
