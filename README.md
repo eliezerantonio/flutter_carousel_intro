@@ -48,34 +48,41 @@ import 'package:flutter_carousel_intro/flutter_carousel_intro.dart';
 
 ```dart
 FlutterCarouselIntro(  
-      slides: [
-       SliderItem(
+       slides: [
+          SliderItem(
             title: 'Title 1',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-1.svg"),
           ),
           SliderItem(
             title: 'Title 2',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-2.svg"),
           ),
           SliderItem(
             title: 'Title 3',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-3.svg"),
           ),
           SliderItem(
             title: 'Title 4',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-4.svg"),
           ),
           SliderItem(
             title: 'Title 5',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-5.svg"),
-            subtitleTextStyle: Theme.of(context).textTheme.displaySmall,
           ),
-      ],
+          SliderItem(
+            title: 'Title 5',
+            widget: SvgPicture.asset("assets/slide-6.svg"),
+            subtitle: ElevatedButton(
+              onPressed: () {},
+              child: const Text("skip"),
+            ),
+          ),
+        ],
     );
   ```
 
@@ -86,9 +93,8 @@ FlutterCarouselIntro(
   String? title,
   TextStyle? titleTextStyle,
   TextAlign? titleTextAlign,
-  String? subtitle,
-  TextStyle? subtitleTextStyle,
-  TextAlign? subtitleTextAlign,
+  Widget? subtitle,
+  
  ```
   
 ## General Example
@@ -112,32 +118,39 @@ class MySlideShow extends StatelessWidget {
         indicatorAlign: IndicatorAlign.bottom,
         indicatorEffect: IndicatorEffects.jumping,
         showIndicators: true,
-        slides: [
+         slides: [
           SliderItem(
             title: 'Title 1',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-1.svg"),
           ),
           SliderItem(
             title: 'Title 2',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-2.svg"),
           ),
           SliderItem(
             title: 'Title 3',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-3.svg"),
           ),
           SliderItem(
             title: 'Title 4',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-4.svg"),
           ),
           SliderItem(
             title: 'Title 5',
-            subtitle: 'Lorem Ipsum is simply dummy text of the printing',
+            subtitle: const Text('Lorem Ipsum is simply dummy text'),
             widget: SvgPicture.asset("assets/slide-5.svg"),
-            subtitleTextStyle: Theme.of(context).textTheme.displaySmall,
+          ),
+          SliderItem(
+            title: 'Title 5',
+            widget: SvgPicture.asset("assets/slide-6.svg"),
+            subtitle: ElevatedButton(
+              onPressed: () {},
+              child: const Text("skip"),
+            ),
           ),
         ],
       );
