@@ -22,14 +22,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -53,8 +48,8 @@ class MySlideShow extends StatelessWidget {
         autoPlaySlideDurationTransition: const Duration(milliseconds: 1100),
         primaryColor: const Color(0xff6C63FF),
         secondaryColor: Colors.grey,
-        scrollDirection: Axis.horizontal,
-        indicatorAlign: IndicatorAlign.bottom,
+        scrollDirection: Axis.vertical,
+        // indicatorAlign: IndicatorAlign.bottom,
         indicatorEffect: IndicatorEffects.jumping,
         showIndicators: true,
         slides: [
