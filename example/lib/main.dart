@@ -45,6 +45,7 @@ class MySlideShow extends StatelessWidget {
         autoPlay: true,
         animatedOpacity: false,
         autoPlaySlideDuration: const Duration(seconds: 2),
+
         autoPlaySlideDurationTransition: const Duration(milliseconds: 1100),
         primaryColor: const Color(0xff6C63FF),
         secondaryColor: Colors.grey,
