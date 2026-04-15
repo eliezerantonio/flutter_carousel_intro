@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/carousel_item.dart';
+import 'package:flutter_carousel_intro/navigation_buttons.dart';
 import 'package:flutter_carousel_intro/page_indicator/page_indicator.dart';
 import 'package:flutter_carousel_intro/slider_item_model.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
@@ -25,6 +26,7 @@ class FlutterCarouselIntro extends StatelessWidget {
   final Curve? autoPlaySlideDurationCurve;
   final Duration? autoPlaySlideDuration;
   final bool autoPlay;
+  final bool repeat;
 
   //* indicators
   final PageIndicator? pageIndicator;
@@ -42,6 +44,21 @@ class FlutterCarouselIntro extends StatelessWidget {
   final TextAlign? subtitleTextAlign;
   final TextStyle? subtitleTextStyle;
 
+  //* navigation buttons
+  final VoidCallback? onSkip;
+  final VoidCallback? onDone;
+  final bool showNextButton;
+  final Widget? skipLabel;
+  final Widget? nextLabel;
+  final Widget? doneLabel;
+  final ButtonStyle? navigationButtonStyle;
+  final NavigationButtonBuilder? skipButtonBuilder;
+  final NavigationButtonBuilder? nextButtonBuilder;
+  final NavigationButtonBuilder? doneButtonBuilder;
+  final AlignmentGeometry skipButtonAlignment;
+  final AlignmentGeometry nextButtonAlignment;
+  final EdgeInsetsGeometry navigationButtonsPadding;
+
   const FlutterCarouselIntro({
     Key? key,
     required this.slides,
@@ -49,6 +66,7 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.animatedRotateZ = false,
     this.animatedOpacity = false,
     this.autoPlay = false,
+    this.repeat = false,
     this.autoPlaySlideDuration,
     this.scale = false,
     this.primaryColor,
@@ -68,6 +86,19 @@ class FlutterCarouselIntro extends StatelessWidget {
     this.autoPlaySlideDurationTransition,
     this.autoPlaySlideDurationCurve,
     this.showIndicators = true,
+    this.onSkip,
+    this.onDone,
+    this.showNextButton = false,
+    this.skipLabel,
+    this.nextLabel,
+    this.doneLabel,
+    this.navigationButtonStyle,
+    this.skipButtonBuilder,
+    this.nextButtonBuilder,
+    this.doneButtonBuilder,
+    this.skipButtonAlignment = Alignment.topRight,
+    this.nextButtonAlignment = Alignment.bottomRight,
+    this.navigationButtonsPadding = const EdgeInsets.all(16),
   }) : super(key: key);
 
   @override
@@ -93,6 +124,7 @@ class FlutterCarouselIntro extends StatelessWidget {
         subtitleTextStyle: subtitleTextStyle,
         subtitleTextAlign: subtitleTextAlign,
         autoPlay: autoPlay,
+        repeat: repeat,
         autoPlaySlideDurationCurve: autoPlaySlideDurationCurve ?? Curves.ease,
         autoPlaySlideDurationTransition: autoPlaySlideDurationTransition ??
             const Duration(milliseconds: 500),
@@ -100,6 +132,19 @@ class FlutterCarouselIntro extends StatelessWidget {
             autoPlaySlideDuration ?? const Duration(milliseconds: 500),
         indicatorEffects: indicatorEffect,
         showIndicators: showIndicators,
+        onSkip: onSkip,
+        onDone: onDone,
+        showNextButton: showNextButton,
+        skipLabel: skipLabel,
+        nextLabel: nextLabel,
+        doneLabel: doneLabel,
+        navigationButtonStyle: navigationButtonStyle,
+        skipButtonBuilder: skipButtonBuilder,
+        nextButtonBuilder: nextButtonBuilder,
+        doneButtonBuilder: doneButtonBuilder,
+        skipButtonAlignment: skipButtonAlignment,
+        nextButtonAlignment: nextButtonAlignment,
+        navigationButtonsPadding: navigationButtonsPadding,
       ),
     );
   }

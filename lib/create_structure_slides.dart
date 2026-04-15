@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/carousel_slides.dart';
+import 'package:flutter_carousel_intro/navigation_buttons.dart';
 import 'package:flutter_carousel_intro/page_indicator/effects/expanding_dots_effect.dart';
 import 'package:flutter_carousel_intro/page_indicator/effects/indicator_effect.dart';
 import 'package:flutter_carousel_intro/page_indicator/effects/jumping_dot_effect.dart';
@@ -31,6 +32,7 @@ class CreateStructureSlides extends StatelessWidget {
     required this.indicatorAlign,
     required this.pageViewController,
     required this.autoPlay,
+    required this.repeat,
     required this.indicatorEffects,
     required this.primaryColor,
     required this.secondaryColor,
@@ -38,6 +40,19 @@ class CreateStructureSlides extends StatelessWidget {
     required this.autoPlaySlideDurationTransition,
     required this.autoPlaySlideDurationCurve,
     required this.showIndicators,
+    required this.onSkip,
+    required this.onDone,
+    required this.showNextButton,
+    required this.skipLabel,
+    required this.nextLabel,
+    required this.doneLabel,
+    required this.navigationButtonStyle,
+    required this.skipButtonBuilder,
+    required this.nextButtonBuilder,
+    required this.doneButtonBuilder,
+    required this.skipButtonAlignment,
+    required this.nextButtonAlignment,
+    required this.navigationButtonsPadding,
     required this.titleTextStyle,
     required this.subtitleTextStyle,
     required this.titleTextAlign,
@@ -57,12 +72,26 @@ class CreateStructureSlides extends StatelessWidget {
   final IndicatorAlign? indicatorAlign;
   final PageController? pageViewController;
   final bool autoPlay;
+  final bool repeat;
   final Duration autoPlaySlideDuration;
   final Color primaryColor;
   final Color secondaryColor;
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
   final bool showIndicators;
+  final VoidCallback? onSkip;
+  final VoidCallback? onDone;
+  final bool showNextButton;
+  final Widget? skipLabel;
+  final Widget? nextLabel;
+  final Widget? doneLabel;
+  final ButtonStyle? navigationButtonStyle;
+  final NavigationButtonBuilder? skipButtonBuilder;
+  final NavigationButtonBuilder? nextButtonBuilder;
+  final NavigationButtonBuilder? doneButtonBuilder;
+  final AlignmentGeometry skipButtonAlignment;
+  final AlignmentGeometry nextButtonAlignment;
+  final EdgeInsetsGeometry navigationButtonsPadding;
   final TextStyle? titleTextStyle;
   final TextStyle? subtitleTextStyle;
   final TextAlign? titleTextAlign;
@@ -82,6 +111,7 @@ class CreateStructureSlides extends StatelessWidget {
           pageViewController,
           scrollDirection: scrollDirection,
           autoPlay: autoPlay,
+          repeat: repeat,
           titleTextStyle: titleTextStyle,
           titleTextAlign: titleTextAlign,
           subtitleTextStyle: subtitleTextStyle,
@@ -104,6 +134,25 @@ class CreateStructureSlides extends StatelessWidget {
               ),
             ),
           ),
+        CarouselNavigationButtons(
+          slidesCount: slides.length,
+          repeat: repeat,
+          transitionDuration: autoPlaySlideDurationTransition,
+          transitionCurve: autoPlaySlideDurationCurve,
+          onSkip: onSkip,
+          onDone: onDone,
+          showNextButton: showNextButton,
+          skipLabel: skipLabel,
+          nextLabel: nextLabel,
+          doneLabel: doneLabel,
+          buttonStyle: navigationButtonStyle,
+          skipButtonBuilder: skipButtonBuilder,
+          nextButtonBuilder: nextButtonBuilder,
+          doneButtonBuilder: doneButtonBuilder,
+          skipAlignment: skipButtonAlignment,
+          nextAlignment: nextButtonAlignment,
+          padding: navigationButtonsPadding,
+        ),
       ],
     );
   }

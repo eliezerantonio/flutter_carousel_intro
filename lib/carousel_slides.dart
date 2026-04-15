@@ -16,6 +16,7 @@ class CarouselSlides extends StatefulWidget {
   final PageController? pageViewController;
   final Axis scrollDirection;
   final bool autoPlay;
+  final bool repeat;
   final Duration autoPlaySlideDuration;
   final Duration autoPlaySlideDurationTransition;
   final Curve autoPlaySlideDurationCurve;
@@ -39,6 +40,7 @@ class CarouselSlides extends StatefulWidget {
     required this.subtitleTextAlign,
     required this.scrollDirection,
     required this.autoPlay,
+    required this.repeat,
     required this.autoPlaySlideDuration,
     required this.autoPlaySlideDurationTransition,
     required this.autoPlaySlideDurationCurve,
@@ -49,49 +51,82 @@ class CarouselSlides extends StatefulWidget {
 }
 
 class CarouselSlidesState extends State<CarouselSlides> {
+  static const int _infiniteInitialPage = 10000;
+  Timer? _autoPlayTimer;
+
   @override
   void initState() {
-    if (widget.pageViewController != null) {
-      context.read<SliderModel>().pageViewController =
-          widget.pageViewController!;
-    }
-    if (widget.autoPlay) {
-      _playSlides();
-    }
-
-    context.read<SliderModel>().pageViewController.addListener(() {
-      //update provider
-      context.read<SliderModel>().currentPage =
-          context.read<SliderModel>().pageViewController.page!;
-    });
     super.initState();
-  }
-
-  void _playSlides() {
-    Timer.periodic(widget.autoPlaySlideDuration, (timer) {
-      if ((context.read<SliderModel>().pageViewController.page ?? 0) + 1 >=
-          widget.slides.length) {
-        timer.cancel();
-      } else {
-        context.read<SliderModel>().pageViewController.nextPage(
-              duration: widget.autoPlaySlideDurationTransition,
-              curve: widget.autoPlaySlideDurationCurve,
-            );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final slider = context.read<SliderModel>();
+      if (widget.pageViewController != null) {
+        slider.pageViewController = widget.pageViewController!;
+      } else if (widget.repeat) {
+        slider.pageViewController = PageController(
+          initialPage: _infiniteInitialPage * widget.slides.length,
+        );
+        slider.currentPage =
+            (_infiniteInitialPage * widget.slides.length).toDouble();
+      }
+      slider.pageViewController.addListener(() {
+        slider.currentPage = slider.pageViewController.page ?? 0;
+      });
+      if (widget.autoPlay) {
+        _playSlides();
       }
     });
   }
 
- 
+  void _playSlides() {
+    _autoPlayTimer?.cancel();
+    _autoPlayTimer = Timer.periodic(widget.autoPlaySlideDuration, (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+      final controller = context.read<SliderModel>().pageViewController;
+
+      if (widget.repeat) {
+        controller.nextPage(
+          duration: widget.autoPlaySlideDurationTransition,
+          curve: widget.autoPlaySlideDurationCurve,
+        );
+        return;
+      }
+
+      final current = (controller.page ?? 0).round();
+      final isLast = current + 1 >= widget.slides.length;
+      if (isLast) {
+        timer.cancel();
+      } else {
+        controller.nextPage(
+          duration: widget.autoPlaySlideDurationTransition,
+          curve: widget.autoPlaySlideDurationCurve,
+        );
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _autoPlayTimer?.cancel();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final currentPage = context.watch<SliderModel>().currentPage;
     return PageView.builder(
-      itemCount: widget.slides.length,
+      itemCount: widget.repeat ? null : widget.slides.length,
       controller: context.read<SliderModel>().pageViewController,
       scrollDirection: widget.scrollDirection,
       physics: widget.physics ?? const BouncingScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
+        final slideIndex = widget.repeat
+            ? index % widget.slides.length
+            : index;
         final percent = 1 - (currentPage - index);
         final value = percent.clamp(0.0, 1.0);
 
@@ -112,7 +147,7 @@ class CarouselSlidesState extends State<CarouselSlides> {
                 ..rotateZ(widget.animatedRotateZ ? pi * (value - 1) : 0.0)
                 ..scale(widget.scale ? value : 1.0, widget.scale ? value : 1.0),
               child: CarouselSlideItem(
-                slide: widget.slides[index],
+                slide: widget.slides[slideIndex],
                 titleTextStyle: widget.titleTextStyle,
                 titleTextAlign: widget.titleTextAlign,
                 subtitleTextStyle: widget.subtitleTextStyle,

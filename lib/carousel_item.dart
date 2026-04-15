@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_intro/create_structure_slides.dart';
+import 'package:flutter_carousel_intro/navigation_buttons.dart';
 import 'package:flutter_carousel_intro/slider_item_model.dart';
 import 'package:flutter_carousel_intro/slider_model.dart';
 import 'package:flutter_carousel_intro/utils/enums.dart';
@@ -22,6 +23,7 @@ class CarouselItem extends StatelessWidget {
     required this.scrollDirection,
     required this.indicatorAlign,
     required this.autoPlay,
+    required this.repeat,
     required this.titleTextStyle,
     required this.subtitleTextStyle,
     required this.titleTextAlign,
@@ -31,7 +33,34 @@ class CarouselItem extends StatelessWidget {
     required this.autoPlaySlideDurationTransition,
     required this.autoPlaySlideDurationCurve,
     required this.showIndicators,
+    required this.onSkip,
+    required this.onDone,
+    required this.showNextButton,
+    required this.skipLabel,
+    required this.nextLabel,
+    required this.doneLabel,
+    required this.navigationButtonStyle,
+    required this.skipButtonBuilder,
+    required this.nextButtonBuilder,
+    required this.doneButtonBuilder,
+    required this.skipButtonAlignment,
+    required this.nextButtonAlignment,
+    required this.navigationButtonsPadding,
   }) : super(key: key);
+
+  final VoidCallback? onSkip;
+  final VoidCallback? onDone;
+  final bool showNextButton;
+  final Widget? skipLabel;
+  final Widget? nextLabel;
+  final Widget? doneLabel;
+  final ButtonStyle? navigationButtonStyle;
+  final NavigationButtonBuilder? skipButtonBuilder;
+  final NavigationButtonBuilder? nextButtonBuilder;
+  final NavigationButtonBuilder? doneButtonBuilder;
+  final AlignmentGeometry skipButtonAlignment;
+  final AlignmentGeometry nextButtonAlignment;
+  final EdgeInsetsGeometry navigationButtonsPadding;
 
   final Color primaryColor;
   final Color secondaryColor;
@@ -47,6 +76,7 @@ class CarouselItem extends StatelessWidget {
   final Axis scrollDirection;
   final IndicatorAlign? indicatorAlign;
   final bool autoPlay;
+  final bool repeat;
   final Duration autoPlaySlideDuration;
   final IndicatorEffects? indicatorEffects;
   final Duration autoPlaySlideDurationTransition;
@@ -79,6 +109,7 @@ class CarouselItem extends StatelessWidget {
           scrollDirection: scrollDirection,
           indicatorAlign: indicatorAlign,
           autoPlay: autoPlay,
+          repeat: repeat,
           titleTextStyle: titleTextStyle,
           titleTextAlign: titleTextAlign,
           subtitleTextStyle: subtitleTextStyle,
@@ -90,6 +121,19 @@ class CarouselItem extends StatelessWidget {
           autoPlaySlideDurationTransition: autoPlaySlideDurationTransition,
           autoPlaySlideDurationCurve: autoPlaySlideDurationCurve,
           showIndicators: showIndicators,
+          onSkip: onSkip,
+          onDone: onDone,
+          showNextButton: showNextButton,
+          skipLabel: skipLabel,
+          nextLabel: nextLabel,
+          doneLabel: doneLabel,
+          navigationButtonStyle: navigationButtonStyle,
+          skipButtonBuilder: skipButtonBuilder,
+          nextButtonBuilder: nextButtonBuilder,
+          doneButtonBuilder: doneButtonBuilder,
+          skipButtonAlignment: skipButtonAlignment,
+          nextButtonAlignment: nextButtonAlignment,
+          navigationButtonsPadding: navigationButtonsPadding,
         );
       }),
     );
