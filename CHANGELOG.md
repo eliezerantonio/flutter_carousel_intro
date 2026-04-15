@@ -1,4 +1,51 @@
 
+# Version 1.0.13
+
+## what's new
+
+* Built-in navigation buttons — `Skip`, `Next` and `Done` are now available
+  directly on `FlutterCarouselIntro`, no need to assemble them manually:
+
+```dart
+FlutterCarouselIntro(
+  showNextButton: true,
+  onSkip: () => Navigator.of(context).pushReplacementNamed('/home'),
+  onDone: () => Navigator.of(context).pushReplacementNamed('/home'),
+  skipLabel: const Text('Skip'),
+  nextLabel: const Text('Next'),
+  doneLabel: const Text('Done'),
+  slides: [...],
+);
+```
+
+  On the last slide the `Next` button is automatically replaced by `Done`
+  (when `onDone` is provided). In `repeat: true` mode there is no last slide,
+  so `Next` is always shown. Each button can be fully overridden via
+  `skipButtonBuilder` / `nextButtonBuilder` / `doneButtonBuilder`, styled via
+  `navigationButtonStyle`, and repositioned via `skipButtonAlignment`,
+  `nextButtonAlignment` and `navigationButtonsPadding`.
+
+* New `repeat` parameter: when `autoPlay` is enabled, setting `repeat: true`
+  makes the carousel loop back to the first slide instead of stopping at the
+  last one.
+
+```dart
+FlutterCarouselIntro(
+  autoPlay: true,
+  repeat: true,
+  slides: [...],
+);
+```
+
+## improvements
+
+* Auto-play `Timer` is now properly cancelled on dispose (no more leaks when
+  navigating away from the carousel).
+* Safer `SliderModel` wiring via `addPostFrameCallback` to avoid touching the
+  page controller before the first frame.
+* Bumped minimum Flutter SDK to `3.24.0` / Dart `3.5.0` and updated
+  `flutter_lints` to `^5.0.0`.
+
 # Version >= 1.0.8
 
 ## break changes

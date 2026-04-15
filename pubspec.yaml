@@ -1,12 +1,12 @@
 name: flutter_carousel_intro
 description: The FlutterCarouselIntro is an amazing package that makes it easy to build and implement animated onboarding screens in Flutter applications.
-version: 1.0.11
+version: 1.0.13
 homepage: https://eliezer-antonio-9108b.web.app/
 repository: https://github.com/eliezerantonio/flutter_carousel_intro
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
   provider: ^6.1.2
 
 dev_dependencies:
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 
